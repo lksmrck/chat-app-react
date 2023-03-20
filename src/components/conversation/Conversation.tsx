@@ -1,12 +1,13 @@
 import Message from "../message/Message";
+import { StyledConversation } from "./styled";
 
 const Conversation = () => {
   return (
-    <div>
-      <Message text="Čus" sent />
+    <StyledConversation>
+      <Message text="Sent mess" sent />
       <Message text="Čus" received />
       <Message text="Čus" received />
-    </div>
+    </StyledConversation>
   );
 };
 

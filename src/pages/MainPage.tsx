@@ -1,12 +1,15 @@
 import Conversation from "../components/conversation/Conversation";
 import Sidebar from "../components/sidebar/Sidebar";
+import { ContentContainer, ContentWrapper } from "./styled";
 
 const MainPage = () => {
   return (
-    <div className="">
-      <Sidebar />
-      <Conversation />
-    </div>
+    <ContentContainer>
+      <ContentWrapper>
+        <Sidebar />
+        <Conversation />
+      </ContentWrapper>
+    </ContentContainer>
   );
 };
 

@@ -1,7 +1,8 @@
 import MainPage from "./pages/MainPage";
 import { useState } from "react";
 import LoginPage from "./pages/LoginPage";
-import Layout from "./components/ui/Layout";
+/* import Layout from "./components/ui/Layout"; */
+import { Layout } from "./components/ui/styled";
 import { Routes as RouterRoutes, Route, Navigate } from "react-router-dom";
 import ProtectedRoutes from "./components/login/ProtectedRoutes";
 

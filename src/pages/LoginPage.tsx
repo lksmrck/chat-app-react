@@ -1,17 +1,24 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "@chakra-ui/react";
-import { StyledLoginPage } from "./styled";
-import { Container } from "../components/ui/styled";
+/* import { StyledLoginPage } from "./styled"; */
+import { ContentWrapper, ContentContainer, LoginTitle } from "./styled";
+import Login from "../components/login/Login";
 
 const LoginPage = () => {
   const navigate = useNavigate();
   return (
-    <StyledLoginPage>
-      Welcome to the CHAT.
-      <Button colorScheme="twitter" onClick={() => navigate("/login")}>
-        Let's login
-      </Button>
-    </StyledLoginPage>
+    <ContentContainer>
+      <ContentWrapper flex="column">
+        <LoginTitle>
+          <span className="welcome">Welcome</span> to the
+          <span className="chat"> CHAT.</span>
+        </LoginTitle>
+        <Login />
+        {/*   <Button colorScheme="twitter" onClick={() => navigate("/login")}>
+          Let's login
+        </Button> */}
+      </ContentWrapper>
+    </ContentContainer>
   );
 };
 
