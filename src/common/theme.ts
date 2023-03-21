@@ -19,9 +19,7 @@ export interface DefaultTheme {
     borderRadius: {
         [key: string]: string
     },
-    centerItems: {
-        [key: string]: string
-    }
+   
 };
 
 
@@ -71,19 +69,28 @@ export const theme: DefaultTheme = {
         large: "2em"
     },
     borderRadius: {
+        xsmall: "6px",
         small: "8px",
         medium: "10px",
         large: "14px", /* Použije se? */
         receivedMessage: "0 10px 10px 10px",
         sentMessage: "10px 0 10px 10px"
     },
-    centerItems: {
-        all: "display: flex; justify-content: center; align-items: center",
-        horizontal: "display: flex; justify-content: center;",
-        vertical: "display: flex; align-items: center",
-    },
+    
 }
 
+
+export const chatLayout = {
+    chatTitleHeight: "50px",
+    messageInputHeight: "40px",
+    messagesListHeight: "calc(100% - 90px)"
+}
+
+export const centerItems = {
+    all: "display: flex; justify-content: center; align-items: center",
+    horizontal: "display: flex; justify-content: center;",
+    vertical: "display: flex; align-items: center",
+}
 
 
 

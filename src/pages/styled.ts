@@ -1,7 +1,9 @@
 import styled from "styled-components";
+import { centerItems } from '../common/theme';
+
 
 type ContentWrapperProps = {
-    flex?: string
+flex?: string
 }
 
 export const ContentContainer = styled.div `
@@ -12,8 +14,7 @@ border: 1px solid ${props => props.theme.color.blackDarker};
 border-radius: ${props => props.theme.borderRadius.medium};
 padding: ${props => props.theme.padding.small};
 ${props => props.theme.shadow.medium}; 
-${props => props.theme.centerItems.all};
-
+${centerItems.all}
 `
 
 export const ContentWrapper = styled.div<ContentWrapperProps>`

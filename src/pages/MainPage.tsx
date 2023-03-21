@@ -1,4 +1,4 @@
-import Conversation from "../components/conversation/Conversation";
+import Chat from "../components/chat/Chat";
 import Sidebar from "../components/sidebar/Sidebar";
 import { ContentContainer, ContentWrapper } from "./styled";
 
@@ -7,7 +7,7 @@ const MainPage = () => {
     <ContentContainer>
       <ContentWrapper>
         <Sidebar />
-        <Conversation />
+        <Chat />
       </ContentWrapper>
     </ContentContainer>
   );

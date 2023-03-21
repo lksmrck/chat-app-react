@@ -4,7 +4,7 @@ import { StyledSendTimeBadge, SendTimeBadgeText } from "./styled";
 const SentTimeBadge = () => {
   return (
     <StyledSendTimeBadge>
-      <img width="16px" src={defaultPic} />
+      <img width="30px" src={defaultPic} />
       <SendTimeBadgeText>just now</SendTimeBadgeText>
     </StyledSendTimeBadge>
   );

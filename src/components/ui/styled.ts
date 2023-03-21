@@ -1,19 +1,21 @@
 import styled from "styled-components";
+import { centerItems } from '../../common/theme';
+
 
 type ContainerProps = {
-    height?: string;
-    width?: string
+height?: string;
+width?: string
 }
 export const Layout = styled.main`
-${props => props.theme.centerItems.all};
+${centerItems.all};
 background-color: ${props => props.theme.color.blueLighter};
 width: 100vw;
 height: 100vh;
 `;
 
 export const Container = styled.div<ContainerProps> `
-    height: ${({height}) => height};
-    width: ${({width} ) => width};
-    ${(props) => props.theme.centerItems.all};
+height: ${({height}) => height};
+width: ${({width} ) => width};
+${centerItems.all};
 `
 

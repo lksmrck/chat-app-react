@@ -1,6 +1,6 @@
 import { FC } from "react";
 import SentTimeBadge from "./SentTimeBadge";
-import { StyledMessage } from "./styled";
+import { StyledMessage, MessageContainer } from "./styled";
 
 type MessageProps = {
   received?: boolean;
@@ -10,12 +10,12 @@ type MessageProps = {
 
 const Message: FC<MessageProps> = ({ received, sent, text }) => {
   return (
-    <>
+    <MessageContainer received={received} sent={sent}>
+      <SentTimeBadge />
       <StyledMessage received={received} sent={sent}>
         {text}
       </StyledMessage>
-      <SentTimeBadge />
-    </>
+    </MessageContainer>
   );
 };
 export default Message;

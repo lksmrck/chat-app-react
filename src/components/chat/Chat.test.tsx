@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
-import Conversation from "./Conversation";
+import Chat from "./Chat";
 
 //TBD
 test("renders learn react link", () => {
-  render(<Conversation />);
+  render(<Chat />);
   const linkElement = screen.getByText(/learn react/i);
   expect(linkElement).toBeInTheDocument();
 });
