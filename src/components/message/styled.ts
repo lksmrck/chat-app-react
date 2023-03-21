@@ -18,11 +18,21 @@ display: flex;
 flex-direction: ${props => props.sent? "row-reverse" : "row"};
 align-items: center;
 
+
 `;
 
 export const StyledMessagesList = styled.div`
   padding: ${(props) => props.theme.padding.small};
-  height: ${chatLayout.messagesListHeight}
+  height: ${chatLayout.messagesListHeight};
+  overflow-y: scroll;
+
+   //Hide scrollbar
+   -ms-overflow-style: none; //IE + Edge
+  scrollbar-width: none; //Firefox
+  &::-webkit-scrollbar {
+    //Chrome
+    display: none;
+  }
 `;
 
 export const StyledMessage = styled.div<StyledMessageProps>`

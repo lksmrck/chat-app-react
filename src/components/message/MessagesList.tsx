@@ -16,6 +16,26 @@ const MessagesList = () => {
         text="grjiowgehiqegpqghqep ihg ipqegh pqieghqepig qpiheg hqipg hqeg hqpegih qpheg qeg hqpeg qpheig phqiegp hqeg hqpeighqpiegh pqiegh pqeig hqpeighqpiegh"
         sent
       />
+      <Message
+        text="grjiowgehiqegpqghqep ihg ipqegh pqieghqepig qpiheg hqipg hqeg hqpegih qpheg qeg hqpeg qpheig phqiegp hqeg hqpeighqpiegh pqiegh pqeig hqpeighqpiegh"
+        sent
+      />
+      <Message
+        text="grjiowgehiqegpqghqep ihg ipqegh pqieghqepig qpiheg hqipg hqeg hqpegih qpheg qeg hqpeg qpheig phqiegp hqeg hqpeighqpiegh pqiegh pqeig hqpeighqpiegh"
+        sent
+      />
+      <Message
+        text="grjiowgehiqegpqghqep ihg ipqegh pqieghqepig qpiheg hqipg hqeg hqpegih qpheg qeg hqpeg qpheig phqiegp hqeg hqpeighqpiegh pqiegh pqeig hqpeighqpiegh"
+        sent
+      />
+      <Message
+        text="grjiowgehiqegpqghqep ihg ipqegh pqieghqepig qpiheg hqipg hqeg hqpegih qpheg qeg hqpeg qpheig phqiegp hqeg hqpeighqpiegh pqiegh pqeig hqpeighqpiegh"
+        sent
+      />
+      <Message
+        text="grjiowgehiqegpqghqep ihg ipqegh pqieghqepig qpiheg hqipg hqeg hqpegih qpheg qeg hqpeg qpheig phqiegp hqeg hqpeighqpiegh pqiegh pqeig hqpeighqpiegh"
+        sent
+      />
     </StyledMessagesList>
   );
 };

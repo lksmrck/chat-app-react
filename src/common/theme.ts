@@ -33,8 +33,10 @@ export const theme: DefaultTheme = {
         blueLighter: "#bbd0ff",
 
         //Secondary
-        blackDarker: "#1c1c1c",
-        blackLighter: "#363636",
+        blackOne: "#252525",
+        blackTwo: "#1c1c1c",
+        blackThree: "#363636",
+        
         green: "#71AE21", //Použije se?
 
         //Messages
@@ -69,7 +71,6 @@ export const theme: DefaultTheme = {
         large: "2em"
     },
     borderRadius: {
-        xsmall: "6px",
         small: "8px",
         medium: "10px",
         large: "14px", /* Použije se? */

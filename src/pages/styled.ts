@@ -7,10 +7,10 @@ flex?: string
 }
 
 export const ContentContainer = styled.div `
-background-color: ${props => props.theme.color.blackLighter};
+background-color: ${props => props.theme.color.blackThree};
 width: 60vw;
 height: 80vh;
-border: 1px solid ${props => props.theme.color.blackDarker};
+border: 1px solid ${props => props.theme.color.blackTwo};
 border-radius: ${props => props.theme.borderRadius.medium};
 padding: ${props => props.theme.padding.small};
 ${props => props.theme.shadow.medium}; 
@@ -36,7 +36,7 @@ font-weight: 800;
 color: white;
 margin-bottom: ${props => props.theme.margin.small};
 border-radius: 40px;
-background-color: ${props => props.theme.color.blackDarker};
+background-color: ${props => props.theme.color.blackTwo};
 
 .welcome {
     position: relative; 

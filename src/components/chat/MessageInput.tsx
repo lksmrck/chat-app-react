@@ -8,6 +8,8 @@ const MessageInput = () => {
         variant="outline"
         placeholder="Type something..."
         focusBorderColor="#71AE21"
+        borderTopRadius="0"
+        size="md"
       />
     </MessageInputContainer>
   );
