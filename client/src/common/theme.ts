@@ -87,6 +87,10 @@ export const chatLayout = {
     messagesListHeight: "calc(100% - 90px)"
 }
 
+export const sidebarLayout = {
+    friendsListHeight: "calc(100% - 80px)"
+}
+
 export const centerItems = {
     all: "display: flex; justify-content: center; align-items: center",
     horizontal: "display: flex; justify-content: center;",

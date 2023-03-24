@@ -14,7 +14,7 @@ border-right: 1px solid #0c0c0c;
 
 `
 
-export const StyledSidebarTitle = styled.div`
+export const StyledNavbar = styled.nav`
 height: ${chatLayout.chatTitleHeight};
 background-color: #141414;
 color: white;
@@ -22,5 +22,6 @@ border-top-left-radius: ${props => props.theme.borderRadius.small};
 `
 
 export const StyledSearch = styled.div`
-color: white
+color: white;
 `
+

@@ -1,9 +1,10 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import pool from "./db";
 
 const app = express();
-/* dotenv.config(); */
+dotenv.config();
 const PORT = /* process.env.PORT ||  */ 9000;
 
 /* import routes from "./routes/api.js"; */

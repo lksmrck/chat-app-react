@@ -2,8 +2,9 @@
 import useUserAuth from "../../hooks/useUserAuth";
 import { Button } from "@chakra-ui/react";
 import { StyledSidebar } from "./styled";
-import SidebarTitle from "./SidebarTitle";
+import Navbar from "./Navbar";
 import Search from "./Search";
+import FriendsList from "./friends/FriendsList";
 
 const Sidebar = () => {
   const { googleSignOut } = useUserAuth();
@@ -18,8 +19,9 @@ const Sidebar = () => {
 
   return (
     <StyledSidebar>
-      <SidebarTitle />
+      <Navbar />
       <Search />
+      <FriendsList />
       {/*  <Button onClick={handleSignOut} /> */}
     </StyledSidebar>
   );
