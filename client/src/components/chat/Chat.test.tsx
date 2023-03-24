@@ -1,9 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import Chat from "./Chat";
+import setupTest from "../../utils/testUtils";
 
 //TBD
-test("renders learn react link", () => {
-  render(<Chat />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+describe("", () => {
+  beforeEach(() => setupTest(<Chat />));
+
+  test("renders learn react link", () => {
+    const linkElement = screen.getByText(/Sent mess/i);
+    expect(linkElement).toBeInTheDocument();
+  });
 });

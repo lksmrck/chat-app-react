@@ -2,7 +2,7 @@
 import useUserAuth from "../../hooks/useUserAuth";
 import { Button } from "@chakra-ui/react";
 import { StyledSidebar } from "./styled";
-import Navbar from "./Navbar";
+import Navbar from "./SidebarNavbar";
 import Search from "./Search";
 import FriendsList from "./friends/FriendsList";
 

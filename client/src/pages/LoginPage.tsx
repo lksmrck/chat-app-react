@@ -9,7 +9,7 @@ const LoginPage = () => {
       <ContentWrapper flex="column">
         <LoginTitle>
           <span className="welcome">Welcome</span> to the
-          <span className="chat"> CHAT.</span>
+          <span className="chat"> chitCHAT.</span>
         </LoginTitle>
         <Login />
       </ContentWrapper>

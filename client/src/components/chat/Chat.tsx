@@ -1,12 +1,12 @@
 import MessagesList from "../message/MessagesList";
-import MessageInput from "./MessageInput";
-import ChatTitle from "./ChatTitle";
+import MessageInput from "./messageInput/MessageInput";
+import ChatNavbar from "./ChatNavbar";
 import { StyledChat } from "./styled";
 
 const Chat = () => {
   return (
     <StyledChat>
-      <ChatTitle />
+      <ChatNavbar />
       <MessagesList />
       <MessageInput />
     </StyledChat>

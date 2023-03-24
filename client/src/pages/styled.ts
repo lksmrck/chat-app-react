@@ -44,7 +44,7 @@ background-color: ${props => props.theme.color.blackTwo};
     &:before { 
         position: absolute;
         content: '';
-        height: .2em;
+        height: .3em;
         width: 80%;
         bottom: .1em;
         z-index: -1;
@@ -57,7 +57,7 @@ background-color: ${props => props.theme.color.blackTwo};
     &:before { 
         position: absolute;
         content: '';
-        height: .2em;
+        height: .1em;
         width: 100%;
         top: .2em;
         z-index: -1;

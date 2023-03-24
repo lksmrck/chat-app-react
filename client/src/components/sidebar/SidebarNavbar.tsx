@@ -1,7 +1,7 @@
 import { StyledNavbar } from "./styled";
 
-const SidebarTitle = () => {
+const SidebarNavbar = () => {
   return <StyledNavbar>Navbar</StyledNavbar>;
 };
 
-export default SidebarTitle;
+export default SidebarNavbar;

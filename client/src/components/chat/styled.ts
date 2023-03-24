@@ -6,13 +6,7 @@ export const StyledChat = styled.div`
   height: 100%;
 `;
 
-export const MessageInputContainer = styled.div`
-  background-color: #c4c4c4;
-  border-bottom-right-radius: ${(props) => props.theme.borderRadius.small};
-  height: ${chatLayout.messageInputHeight};
-`;
-
-export const StyledChatTitle = styled.div`
+export const StyledChatNavbar = styled.nav`
   display: flex;
   align-items: center;
   background-color: ${(props) => props.theme.color.blackOne};
