@@ -25,9 +25,20 @@ export const sendMessage = async (message: MessageObject) => {
     }
 }
 
+//Přidání nové konverzace po kliknutí na + button v navbaru
+export const findUser = async(email: string) => {
+
+    try {
+        const res = await API.get("/users/" + email) 
+       } catch (err) {
+        console.log(err)
+       }
+}
+
+//TBD
 export const getUser = async (userId: string) => {
    try {
-    const res = await API.get("/users?userId=" + userId)  //   /users/:id
+    const res = await API.get("/users/" + userId)  //   /users/:id
    } catch (err) {
     console.log(err)
    }
@@ -35,7 +46,8 @@ export const getUser = async (userId: string) => {
 
 export const createUser = async (user: UserObject) => {
     try {
-        const res = await API.post("/users", user) //   /users route je OK
+        const res = await API.post("/users", user) 
+        console.log(res)
     } catch (err ) {
         console.log(err)
     }

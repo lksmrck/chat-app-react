@@ -22,6 +22,7 @@ const useUserAuth = () => {
       /*   const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential?.accessToken; */
       const { email, uid, displayName } = result.user;
+
       createUser({ email, uid, displayName });
       navigate(routes.chat);
     });
