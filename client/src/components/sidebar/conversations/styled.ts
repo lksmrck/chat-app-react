@@ -38,3 +38,5 @@ export const StyledPreviewMessage = styled.h3`
 color: grey;
 font-size: ${props => props.theme.fontSize.s};
 `
+
+export const StyledAddConversationModal = styled.div``
