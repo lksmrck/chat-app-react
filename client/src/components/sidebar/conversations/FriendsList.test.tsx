@@ -1,11 +1,11 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import FriendsList from "./FriendsList";
+import ConversationList from "./ConversationList";
 
 // TBD
 
 test("renders learn react link", () => {
-  render(<FriendsList />);
+  render(<ConversationList />);
   const linkElement = screen.getByText(/learn react/i);
   expect(linkElement).toBeInTheDocument();
 });

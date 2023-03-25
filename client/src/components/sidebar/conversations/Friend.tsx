@@ -1,22 +1,22 @@
 import React from "react";
 import defaultPic from "../../../assets/Default_pfp.png";
 import {
-  StyledFriend,
+  StyledConversation,
   StyledFriendName,
   StyledPreviewMessage,
   Container,
 } from "./styled";
 
-const Friend = () => {
+const Conversation = () => {
   return (
-    <StyledFriend>
+    <StyledConversation>
       <img src={defaultPic} width="70px" />
       <Container>
         <StyledFriendName>Friend Name</StyledFriendName>
         <StyledPreviewMessage>Some messageSOmmeMessage</StyledPreviewMessage>
       </Container>
-    </StyledFriend>
+    </StyledConversation>
   );
 };
 
-export default Friend;
+export default Conversation;

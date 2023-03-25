@@ -1,10 +1,9 @@
-import React from "react";
 import Friend from "./Friend";
-import { StyledFriendsList } from "./styled";
+import { StyledConversationList } from "./styled";
 
-const FriendsList = () => {
+const ConversationList = () => {
   return (
-    <StyledFriendsList>
+    <StyledConversationList>
       <Friend />
       <Friend />
       <Friend />
@@ -15,8 +14,8 @@ const FriendsList = () => {
       <Friend />
       <Friend />
       <Friend />
-    </StyledFriendsList>
+    </StyledConversationList>
   );
 };
 
-export default FriendsList;
+export default ConversationList;

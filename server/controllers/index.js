@@ -1,7 +1,7 @@
 import express from "express";
 
 export const getMessages = async (req, res) => {
-  const conversationId = req.query.conversationId; //identifikátor konverzace
+  /*   const conversationId = req.query.conversationId;  */ //identifikátor konverzace
 
   try {
     const conversation = 0; //vytažení z DB
@@ -13,7 +13,10 @@ export const getMessages = async (req, res) => {
 };
 
 export const sendMessage = async (req, res) => {
-  const message = req.body;
+  const { sender, text, date } = req.body;
+  console.log(sender);
+  console.log(text);
+  console.log(date);
 
   try {
     //Ulozeni do db
@@ -32,3 +35,5 @@ export const createConversation = async (req, res) => {
     res.status(409).json({ message: error.message });
   }
 };
+
+export const getUser = async (email) => {};

@@ -7,7 +7,7 @@ import setupTest from "../../utils/testUtils";
 describe("", () => {
   beforeEach(() => setupTest(<Chat />));
 
-  test("renders learn react link", () => {
+  test("testing test", () => {
     const linkElement = screen.getByText(/Sent mess/i);
     expect(linkElement).toBeInTheDocument();
   });

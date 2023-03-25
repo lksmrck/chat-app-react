@@ -1,13 +1,14 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import pool from "./db";
+
+/* import pool from "./db"; */
 
 const app = express();
 dotenv.config();
-const PORT = /* process.env.PORT ||  */ 9000;
+const PORT = /* process.env.PORT ||  */ 8000;
 
-/* import routes from "./routes/api.js"; */
+import routes from "./routes/api.js";
 
 //Database connection
 
@@ -19,13 +20,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 //Setting /api as a strating route
-/* app.use("/", routes); */
+app.use("/", routes);
 
 /* app.get("/", (req, res) => {
   res.send("APP IS RUNNING");
-});
- */
+}); */
 
 app.listen(PORT, () => {
-  console.log("listening yo");
+  console.log("listening yo on port: " + PORT);
 });

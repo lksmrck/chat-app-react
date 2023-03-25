@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { sidebarLayout } from "../../../common/theme"
 
 
-export const StyledFriendsList = styled.ul`
+export const StyledConversationList = styled.ul`
 height: ${sidebarLayout.friendsListHeight};
 overflow-y: scroll;
 
@@ -16,7 +16,7 @@ overflow-y: scroll;
 
 `
 
-export const StyledFriend = styled.li`
+export const StyledConversation = styled.li`
 display: flex;
 color: white;
 border-bottom: 1px solid grey;

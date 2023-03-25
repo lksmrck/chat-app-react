@@ -1,5 +1,5 @@
 import MessagesList from "../message/MessagesList";
-import MessageInput from "./messageInput/MessageInput";
+import SendMessageForm from "./sendMessageForm/SendMessageForm";
 import ChatNavbar from "./ChatNavbar";
 import { StyledChat } from "./styled";
 
@@ -8,7 +8,7 @@ const Chat = () => {
     <StyledChat>
       <ChatNavbar />
       <MessagesList />
-      <MessageInput />
+      <SendMessageForm />
     </StyledChat>
   );
 };

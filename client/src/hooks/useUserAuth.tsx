@@ -8,6 +8,7 @@ import {
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../constants";
+import { createUser } from "../api";
 
 const useUserAuth = () => {
   const [isLoading, setIsLoading] = useState();
@@ -18,21 +19,18 @@ const useUserAuth = () => {
 
     //Google doporučuje signInWithPopup na větších obrazovkách a signInWithRedirect na menších
     await signInWithPopup(auth, provider).then((result) => {
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential?.accessToken;
-      const user = result.user;
-
+      /*   const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential?.accessToken; */
+      const { email, uid, displayName } = result.user;
+      createUser({ email, uid, displayName });
       navigate(routes.chat);
-      /* 
-      console.log(token);
-      console.log(user); */
     });
 
     //TODO: Vytvořit usera a k němu chat kolekci
   };
 
-  const googleSignOut = () => {
-    signOut(auth);
+  const googleSignOut = async () => {
+    signOut(auth).then(() => navigate(routes.login));
   };
 
   return { googleSignIn, googleSignOut };

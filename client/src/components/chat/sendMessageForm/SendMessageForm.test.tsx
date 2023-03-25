@@ -1,11 +1,11 @@
 import React from "react";
 import { screen, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import MessageInput from "./MessageInput";
+import SendMessageForm from "./SendMessageForm";
 import setupTest from "../../../utils/testUtils";
 
 describe("input testing", () => {
-  beforeEach(() => setupTest(<MessageInput />));
+  beforeEach(() => setupTest(<SendMessageForm />));
   /*  render(<MessageInput />); */
   /*  beforeEach(() => setupTest(<Input placeholder="Search city" />)); */
   test("input changes correctly when user is typing", () => {
