@@ -21,9 +21,9 @@ const useUserAuth = () => {
     await signInWithPopup(auth, provider).then((result) => {
       /*   const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential?.accessToken; */
-      const { email, uid, displayName } = result.user;
+      const { email, uid, displayName, photoURL } = result.user;
 
-      createUser({ email, uid, displayName });
+      createUser({ email, uid, displayName, photoURL });
       navigate(routes.chat);
     });
 

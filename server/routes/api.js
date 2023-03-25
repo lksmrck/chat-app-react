@@ -5,7 +5,7 @@ import {
   sendMessage,
   createConversation,
   createUser,
-  findUser,
+  findUsers,
 } from "../controllers/index.js";
 
 const router = express.Router();
@@ -18,6 +18,6 @@ router.post("/conversations", createConversation);
 
 router.post("/users", createUser);
 
-router.get("/users/:email", findUser);
+router.get("/users/:email", findUsers);
 
 export default router;

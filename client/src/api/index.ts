@@ -13,7 +13,21 @@ export const getConversations = async (userId: string) => {
     }
 }
 export const getMessages = async () => {}
-export const createConversation = async () => {}
+
+export const createConversation = async (usersId: {searchingUserId: string, foundUserId: string}) => {
+
+console.log(usersId)
+
+    try {
+        const res = await API.post("/conversations", usersId )
+        console.log(res.data)
+       
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+
 
 export const sendMessage = async (message: MessageObject) => {
 
@@ -30,6 +44,8 @@ export const findUser = async(email: string) => {
 
     try {
         const res = await API.get("/users/" + email) 
+        return res.data
+        /* console.log(res.data) */
        } catch (err) {
         console.log(err)
        }
