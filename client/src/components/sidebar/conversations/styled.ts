@@ -22,6 +22,11 @@ color: white;
 border-bottom: 1px solid grey;
 padding: ${props => props.theme.padding.xsmall};
 
+&:hover {
+  cursor: pointer;
+  background-color: #363636 ;
+}
+
 `
 
 export const Container = styled.div`
@@ -88,5 +93,5 @@ export const StyledUserEmail = styled.h3`
 font-size: ${props => props.theme.fontSize.xs};
 margin-left: ${props => props.theme.margin.small};
 line-height: 0.8rem;
-color: red;
+
 `

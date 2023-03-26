@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthContextProvider } from "./context/AuthContext";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./common/theme";
+import { ChatContextProvider } from "./context/ChatContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -14,9 +15,11 @@ root.render(
   <ChakraProvider>
     <BrowserRouter>
       <AuthContextProvider>
-        <ThemeProvider theme={theme}>
-          <App />
-        </ThemeProvider>
+        <ChatContextProvider>
+          <ThemeProvider theme={theme}>
+            <App />
+          </ThemeProvider>
+        </ChatContextProvider>
       </AuthContextProvider>
     </BrowserRouter>
   </ChakraProvider>

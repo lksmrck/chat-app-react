@@ -1,13 +1,13 @@
 import axios from "axios";
 import { MessageObject, UserObject } from "../types/types";
+import { ConversationObject } from "../types/types";
 
 const API = axios.create({baseURL:  "http://localhost:8000" })
 
 
+//DONE, TODO: upravit callback type
+export const getConversations = async (userId: string, callback: any/* (conversations: ConversationObject[]) => () => void */) => {
 
-export const getConversations = async (userId: string, callback: any) => {
-    
-    
     try {
     const res = await API.get("/conversations/" + userId)   
      return callback(res.data) //???
@@ -15,7 +15,17 @@ export const getConversations = async (userId: string, callback: any) => {
         console.log(err)
     }
 }
-export const getMessages = async () => {}
+//DONE, TODO: upravit callback type
+export const getMessages = async (conversationID: string, callback: any) => {
+    
+    try {
+        const res = await API.get("/messages/" + conversationID)  //  
+        return callback(res.data) 
+        
+       } catch (err) {
+        console.log(err)
+       }
+}
 
 //DONE
 export const createConversation = async (/* usersId: {searchingUserId: string, foundUserId: string} */ usersObject: any) => {
@@ -33,8 +43,10 @@ export const createConversation = async (/* usersId: {searchingUserId: string, f
 
 export const sendMessage = async (message: MessageObject) => {
 
+  /*   const {conversation_id, text, time, sender_id, receiver_id} = message */
+console.log(message)
     try {
-        const res = await API.post("/message", message)
+        const res = await API.post("/messages", message)
        
     } catch (err) {
         console.log(err)

@@ -11,9 +11,9 @@ import {
 
 const router = express.Router();
 
-router.get("/messages", getMessages);
+router.get("/messages/:conversationID", getMessages);
 
-router.post("/message", sendMessage);
+router.post("/messages", sendMessage);
 
 router.post("/conversations", createConversation);
 

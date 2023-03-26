@@ -23,5 +23,7 @@ CREATE TABLE message (
     id SERIAL PRIMARY KEY,
     conversation_id character varying REFERENCES conversation(id),
     text text,
-    time character varying(255)
+    time character varying,
+    sender_id character varying,
+    receiver_id character varying
 );

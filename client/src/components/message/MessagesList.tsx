@@ -1,41 +1,42 @@
 import Message from "./Message";
 import { StyledMessagesList } from "./styled";
+import { useEffect, useState } from "react";
+import useChat from "../../hooks/useChat";
+import useAuth from "../../hooks/useAuth";
+import { getMessages } from "../../api";
 
 const MessagesList = () => {
+  const [messages, setMessages] = useState<any>([]);
+
+  const { currentUser } = useAuth();
+  const { currentConversation } = useChat();
+
+  useEffect(() => {
+    const fetchMessages = async () => {
+      const unsub = await getMessages(
+        currentConversation.id,
+        (fetchedMessages: any) => setMessages(fetchedMessages)
+      );
+      return () => unsub();
+    };
+
+    currentConversation && fetchMessages();
+  }, [currentConversation]);
+
   return (
     <StyledMessagesList>
-      <Message text="Sent mess" sent />
-      <Message text="Čus" received />
-      <Message text="qweqwewqeqweqweqweqweqweqweqwewqeqweqweqwe" received />
-      <Message text="Čus" received />
-      <Message
-        text="qweqweqweqwgegwgewegwgwegwegwgwegwegwegwegwegwegwegwegwegwegwegwegwegwegwe"
-        received
-      />
-      <Message
-        text="grjiowgehiqegpqghqep ihg ipqegh pqieghqepig qpiheg hqipg hqeg hqpegih qpheg qeg hqpeg qpheig phqiegp hqeg hqpeighqpiegh pqiegh pqeig hqpeighqpiegh"
-        sent
-      />
-      <Message
-        text="grjiowgehiqegpqghqep ihg ipqegh pqieghqepig qpiheg hqipg hqeg hqpegih qpheg qeg hqpeg qpheig phqiegp hqeg hqpeighqpiegh pqiegh pqeig hqpeighqpiegh"
-        sent
-      />
-      <Message
-        text="grjiowgehiqegpqghqep ihg ipqegh pqieghqepig qpiheg hqipg hqeg hqpegih qpheg qeg hqpeg qpheig phqiegp hqeg hqpeighqpiegh pqiegh pqeig hqpeighqpiegh"
-        sent
-      />
-      <Message
-        text="grjiowgehiqegpqghqep ihg ipqegh pqieghqepig qpiheg hqipg hqeg hqpegih qpheg qeg hqpeg qpheig phqiegp hqeg hqpeighqpiegh pqiegh pqeig hqpeighqpiegh"
-        sent
-      />
-      <Message
-        text="grjiowgehiqegpqghqep ihg ipqegh pqieghqepig qpiheg hqipg hqeg hqpegih qpheg qeg hqpeg qpheig phqiegp hqeg hqpeighqpiegh pqiegh pqeig hqpeighqpiegh"
-        sent
-      />
-      <Message
-        text="grjiowgehiqegpqghqep ihg ipqegh pqieghqepig qpiheg hqipg hqeg hqpegih qpheg qeg hqpeg qpheig phqiegp hqeg hqpeighqpiegh pqiegh pqeig hqpeighqpiegh"
-        sent
-      />
+      {messages.map((message: any) => {
+        const isSent = currentUser.uid === message.sender_id ? true : false;
+
+        return (
+          <Message
+            key={message.time}
+            text={message.text}
+            sent={isSent}
+            received={!isSent}
+          />
+        );
+      })}
     </StyledMessagesList>
   );
 };

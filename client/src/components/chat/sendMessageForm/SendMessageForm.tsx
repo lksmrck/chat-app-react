@@ -3,11 +3,13 @@ import { Input } from "@chakra-ui/react";
 import { useState } from "react";
 import { sendMessage } from "../../../api";
 import useAuth from "../../../hooks/useAuth";
+import useChat from "../../../hooks/useChat";
 
 const SendMessageForm = () => {
   const [message, setMessage] = useState("");
 
   const { currentUser } = useAuth();
+  const { currentConversation } = useChat();
 
   const inputChangeHandler = (e: any) => {
     setMessage(e.target.value);
@@ -15,10 +17,18 @@ const SendMessageForm = () => {
 
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const userIsMember1 = currentUser.uid === currentConversation.member1id;
+
     const messageObject = {
-      sender: currentUser.uid,
+      sender_id: currentUser.uid,
+      receiver_id:
+        userIsMember1 === true
+          ? currentConversation.member2id
+          : currentConversation.member1id,
+      conversation_id: currentConversation.id,
       text: message,
-      date: new Date(),
+      time: new Date(),
     }; //TODO: updavit date format
     sendMessage(messageObject);
     setMessage("");

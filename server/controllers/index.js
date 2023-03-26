@@ -6,11 +6,15 @@ import { generateID } from "../utils/utils.js";
 //TBD
 export const getMessages = async (req, res) => {
   /*   const conversationId = req.query.conversationId;  */ //identifikátor konverzace
+  const { conversationID } = req.params;
 
   try {
-    const conversation = 0; //vytažení z DB
+    const messages = await pool.query(
+      "SELECT * FROM message WHERE conversation_id = $1",
+      [conversationID]
+    );
 
-    res.status(200).json(conversation);
+    res.status(200).json(messages.rows);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
@@ -18,14 +22,16 @@ export const getMessages = async (req, res) => {
 
 //TBD
 export const sendMessage = async (req, res) => {
-  const { sender, text, date } = req.body;
-  console.log(sender);
-  console.log(text);
-  console.log(date);
+  const { sender_id, receiver_id, conversation_id, text, time } = req.body;
+
+  const newMessage = await pool.query(
+    "INSERT INTO message (conversation_id, sender_id, receiver_id, text, time) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+    [conversation_id, sender_id, receiver_id, text, time]
+  );
 
   try {
     //Ulozeni do db
-    res.status(201).json(message);
+    res.status(201).json(newMessage.rows[0]);
   } catch (error) {
     res.status(409).json({ message: error.message });
   }

@@ -1,4 +1,4 @@
-import Friend from "./Friend";
+import Conversation from "./Conversation";
 import { StyledConversationList } from "./styled";
 import { useEffect, useState } from "react";
 import useAuth from "../../../hooks/useAuth";
@@ -15,9 +15,10 @@ const ConversationList = () => {
     const fetchConversations = async () => {
       const unsub = await getConversations(
         currentUser.uid,
-        (fetchedData: any) => setConversations(fetchedData)
+        (fetchedData: ConversationObject[]) => setConversations(fetchedData)
       );
 
+      if (!unsub) return;
       return () => unsub();
     };
 
@@ -26,7 +27,9 @@ const ConversationList = () => {
   return (
     <StyledConversationList>
       {conversations.map((conversation: ConversationObject) => {
-        return <Friend conversation={conversation} />;
+        return (
+          <Conversation key={conversation.id} conversation={conversation} />
+        );
       })}
     </StyledConversationList>
   );
