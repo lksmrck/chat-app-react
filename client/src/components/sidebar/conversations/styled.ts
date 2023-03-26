@@ -26,7 +26,7 @@ padding: ${props => props.theme.padding.xsmall};
 
 export const Container = styled.div`
 margin-left: ${props => props.theme.margin.small};
-margin-top: ${props => props.theme.margin.small};
+align-self: center;
 
 `
 
@@ -88,4 +88,5 @@ export const StyledUserEmail = styled.h3`
 font-size: ${props => props.theme.fontSize.xs};
 margin-left: ${props => props.theme.margin.small};
 line-height: 0.8rem;
+color: red;
 `

@@ -31,9 +31,33 @@ export const sendMessage = async (req, res) => {
   }
 };
 
-//TBD
+export const getConversations = async (req, res) => {
+  const { userID } = req.params;
+  console.log(userID);
+  try {
+    //Find all conversations where requesting user is part of the members array
+    const existingConversations = await pool.query(
+      "SELECT * FROM conversation WHERE $1=ANY(members)",
+      [userID]
+    );
+    /*    console.log(existingConversations); */
+    res.status(200).json(existingConversations.rows);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+};
+
+//DONE
 export const createConversation = async (req, res) => {
-  const { searchingUserId, foundUserId } = req.body;
+  /*   const { searchingUserId, foundUserId } = req.body; */
+  const {
+    searchingUserId,
+    searchingUserName,
+    searchingUserPhotoUrl,
+    foundUserId,
+    foundUserName,
+    foundUserPhotoUrl,
+  } = req.body;
 
   const generatedID = generateID();
 
@@ -46,8 +70,18 @@ export const createConversation = async (req, res) => {
 
     if (existingConversation.rowCount == 0) {
       const newConversation = await pool.query(
-        "INSERT INTO conversation (id, members) VALUES ($1, ARRAY[$2, $3]) RETURNING *",
-        [generatedID, searchingUserId, foundUserId]
+        "INSERT INTO conversation (id, members, member1id, member1name, member1photourl, member2id, member2name, member2photourl) VALUES ($1, ARRAY[$2, $3], $4, $5, $6, $7, $8, $9) RETURNING *",
+        [
+          generatedID,
+          searchingUserId,
+          foundUserId,
+          searchingUserId,
+          searchingUserName,
+          searchingUserPhotoUrl,
+          foundUserId,
+          foundUserName,
+          foundUserPhotoUrl,
+        ]
       );
       res.status(201).json(newConversation.rows);
     } else res.json({ message: "Conversation already exists!" });

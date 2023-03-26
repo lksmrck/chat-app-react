@@ -17,30 +17,41 @@ type FoundUsersResultProps = {
 const FoundUsersList: FC<FoundUsersResultProps> = ({ foundUsers }) => {
   const { currentUser } = useAuth();
 
-  const foundUserClickHandler = (clickedUserId: string) => {
-    const usersIdData = {
+  const foundUserClickHandler = (foundUser: any) => {
+    /*   const usersIdData = {
       searchingUserId: currentUser.uid,
       foundUserId: clickedUserId,
+    }; */
+
+    const usersData = {
+      searchingUserId: currentUser.uid,
+      searchingUserName: currentUser.displayName,
+      searchingUserPhotoUrl: currentUser.photoURL,
+      foundUserId: foundUser.uid,
+      foundUserName: foundUser.displayName,
+      foundUserPhotoUrl: foundUser.photoURL,
     };
-    createConversation(usersIdData);
+
+    /* createConversation(usersIdData); */
+    createConversation(usersData);
   };
 
   return (
     <StyledFoundUsersList>
-      {foundUsers.map((user) => {
+      {foundUsers.map((foundUser) => {
         return (
           <StyledFoundUser
-            key={user.uid}
-            onClick={() => foundUserClickHandler(user.uid)}
+            key={foundUser.uid}
+            onClick={() => foundUserClickHandler(foundUser)}
           >
             <img
-              src={user.photoURL!}
+              src={foundUser.photoURL!}
               width="30px"
               style={{ borderRadius: "50%" }}
             />
             <UserInfoContainer>
-              <StyledUserName>{user.displayName}</StyledUserName>
-              <StyledUserEmail>{user.email}</StyledUserEmail>
+              <StyledUserName>{foundUser.displayName}</StyledUserName>
+              <StyledUserEmail>{foundUser.email}</StyledUserEmail>
             </UserInfoContainer>
           </StyledFoundUser>
         );

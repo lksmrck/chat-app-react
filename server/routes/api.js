@@ -4,6 +4,7 @@ import {
   getMessages,
   sendMessage,
   createConversation,
+  getConversations,
   createUser,
   findUsers,
 } from "../controllers/index.js";
@@ -15,6 +16,8 @@ router.get("/messages", getMessages);
 router.post("/message", sendMessage);
 
 router.post("/conversations", createConversation);
+
+router.get("/conversations/:userID", getConversations);
 
 router.post("/users", createUser);
 

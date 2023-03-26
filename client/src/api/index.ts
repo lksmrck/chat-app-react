@@ -3,23 +3,25 @@ import { MessageObject, UserObject } from "../types/types";
 
 const API = axios.create({baseURL:  "http://localhost:8000" })
 
-export const getConversations = async (userId: string) => {
+
+
+export const getConversations = async (userId: string, callback: any) => {
     
     
     try {
-    const res = await API.get("/" + userId)    
+    const res = await API.get("/conversations/" + userId)   
+     return callback(res.data) //???
     } catch (err) {
         console.log(err)
     }
 }
 export const getMessages = async () => {}
 
-export const createConversation = async (usersId: {searchingUserId: string, foundUserId: string}) => {
-
-console.log(usersId)
+//DONE
+export const createConversation = async (/* usersId: {searchingUserId: string, foundUserId: string} */ usersObject: any) => {
 
     try {
-        const res = await API.post("/conversations", usersId )
+        const res = await API.post("/conversations", /* usersId */usersObject )
         console.log(res.data)
        
     } catch (err) {
@@ -40,6 +42,7 @@ export const sendMessage = async (message: MessageObject) => {
 }
 
 //Přidání nové konverzace po kliknutí na + button v navbaru
+//DONE
 export const findUser = async(email: string) => {
 
     try {
@@ -59,7 +62,7 @@ export const getUser = async (userId: string) => {
     console.log(err)
    }
 }
-
+//DONE
 export const createUser = async (user: UserObject) => {
     try {
         const res = await API.post("/users", user) 

@@ -30,7 +30,6 @@ const AddConversationModal: FC<AddConversationModalProps> = ({
     const API_CALL = setTimeout(async () => {
       if (searchTerm.length > 0) {
         const foundData = await findUser(searchTerm);
-        /*  console.log(await findUser(searchTerm)); */
 
         console.log(foundData);
         setFoundUsers(foundData);
