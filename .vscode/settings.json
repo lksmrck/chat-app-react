@@ -1,4 +1,9 @@
 {
-    "editor.wordWrap": "wordWrapColumn",
-    "editor.wordWrapColumn": 160
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.wordWrapColumn": 100,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.printWidth": 100
 }

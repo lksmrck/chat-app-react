@@ -1,29 +1,49 @@
 import express from "express";
+import http from "http";
 import cors from "cors";
+import { Server } from "socket.io";
 import dotenv from "dotenv";
+import routes from "./routes/api.js";
+import messageHandler from "./controllers/socketio/messageHandler.js";
 
 const app = express();
+
 dotenv.config();
-const PORT = /* process.env.PORT ||  */ 8000;
 
-import routes from "./routes/api.js";
-
-//Database connection
-
-//Data parsing
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
-//CORS policy handler
 app.use(cors());
 
-//Setting /api as a strating route
+const PORT = /* process.env.PORT ||  */ 8000;
+
 app.use("/", routes);
 
-/* app.get("/", (req, res) => {
-  res.send("APP IS RUNNING");
-}); */
+//Create HTTP server with Express
+const server = http.createServer(app);
 
-app.listen(PORT, () => {
-  console.log("listening yo on port: " + PORT);
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:3000", //FE
+    methods: ["GET", "POST"],
+  },
+});
+
+server.listen(PORT, () => {
+  console.log("Listening yo on port: " + PORT);
+});
+
+io.on("connection", (socket) => {
+  console.log("User connected: " + socket.id); //when someone connects -> přiřadí random ID
+
+  socket.on("join_chat", (data) => {
+    //data bude room id
+    socket.join(data); //based on the room the entered in FE
+  });
+
+  //DONE
+  //Send a received message
+  socket.on("send_message", (message) => messageHandler(socket, message));
+
+  socket.on("disconnect", () => {
+    //when someone wants to disconnect (close the tab)
+    console.log("User diconnected", socket.id);
+  });
 });

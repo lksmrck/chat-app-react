@@ -8,9 +8,7 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "./common/theme";
 import { ChatContextProvider } from "./context/ChatContext";
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
   <ChakraProvider>
     <BrowserRouter>

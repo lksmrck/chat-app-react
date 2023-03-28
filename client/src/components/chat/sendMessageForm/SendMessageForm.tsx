@@ -4,12 +4,15 @@ import { useState } from "react";
 import { sendMessage } from "../../../api";
 import useAuth from "../../../hooks/useAuth";
 import useChat from "../../../hooks/useChat";
+import socket from "../../../socket";
+import useMessages from "../../../hooks/useMessages";
 
 const SendMessageForm = () => {
   const [message, setMessage] = useState("");
 
   const { currentUser } = useAuth();
   const { currentConversation } = useChat();
+  const { setMessages } = useMessages();
 
   const inputChangeHandler = (e: any) => {
     setMessage(e.target.value);
@@ -23,14 +26,13 @@ const SendMessageForm = () => {
     const messageObject = {
       sender_id: currentUser.uid,
       receiver_id:
-        userIsMember1 === true
-          ? currentConversation.member2id
-          : currentConversation.member1id,
+        userIsMember1 === true ? currentConversation.member2id : currentConversation.member1id,
       conversation_id: currentConversation.id,
       text: message,
       time: new Date(),
     }; //TODO: updavit date format
-    sendMessage(messageObject);
+    setMessages((prevMessages: any) => [...prevMessages, messageObject]);
+    socket.emit("send_message", messageObject);
     setMessage("");
   };
 

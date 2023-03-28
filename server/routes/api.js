@@ -1,19 +1,14 @@
 import express from "express";
 
-import {
-  getMessages,
-  sendMessage,
-  createConversation,
-  getConversations,
-  createUser,
-  findUsers,
-} from "../controllers/index.js";
+import { getMessages } from "../controllers/messageControllers.js";
+import { createConversation, getConversations } from "../controllers/conversationControllers.js";
+import { createUser, findUsers } from "../controllers/userControllers.js";
 
 const router = express.Router();
 
 router.get("/messages/:conversationID", getMessages);
 
-router.post("/messages", sendMessage);
+/* router.post("/messages", sendMessage); */
 
 router.post("/conversations", createConversation);
 
