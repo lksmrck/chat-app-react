@@ -1,17 +1,16 @@
 import { StyledForm } from "./styled";
 import { Input } from "@chakra-ui/react";
 import { useState } from "react";
-import { sendMessage } from "../../../api";
-import useAuth from "../../../hooks/useAuth";
-import useChat from "../../../hooks/useChat";
+import useAuth from "../../../context/AuthContext";
 import socket from "../../../socket";
 import useMessages from "../../../hooks/useMessages";
+import useConversation from "../../../context/ConversationContext";
 
 const SendMessageForm = () => {
   const [message, setMessage] = useState("");
 
   const { currentUser } = useAuth();
-  const { currentConversation } = useChat();
+  const { currentConversation } = useConversation();
   const { setMessages } = useMessages();
 
   const inputChangeHandler = (e: any) => {
@@ -42,10 +41,12 @@ const SendMessageForm = () => {
         variant="outline"
         placeholder="Type something..."
         focusBorderColor="#71AE21"
-        borderTopRadius="0"
+        /*  borderTopRadius="0" */
         size="md"
         value={message}
         onChange={inputChangeHandler}
+        style={{ width: "80%", marginLeft: "1em" }}
+        borderRadius={18}
       />
     </StyledForm>
   );

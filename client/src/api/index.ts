@@ -38,16 +38,6 @@ export const createConversation = async (
   }
 };
 
-export const sendMessage = async (message: MessageObject) => {
-  /* const {conversation_id, text, time, sender_id, receiver_id} = message */
-  console.log(message);
-  try {
-    const res = await API.post("/messages", message);
-  } catch (err) {
-    console.log(err);
-  }
-};
-
 //Přidání nové konverzace po kliknutí na + button v navbaru
 //DONE
 export const findUser = async (email: string) => {

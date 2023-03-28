@@ -1,21 +1,18 @@
 import Conversation from "./Conversation";
 import { StyledConversationList } from "./styled";
 import { useEffect, useState } from "react";
-import useAuth from "../../../hooks/useAuth";
+import useAuth from "../../../context/AuthContext";
 import { getConversations } from "../../../api";
 import { ConversationObject } from "../../../types/types";
 
 const ConversationList = () => {
   const { currentUser } = useAuth();
-  const [conversations, setConversations] = useState<ConversationObject[] | []>(
-    []
-  );
+  const [conversations, setConversations] = useState<ConversationObject[] | []>([]);
 
   useEffect(() => {
     const fetchConversations = async () => {
-      const unsub = await getConversations(
-        currentUser.uid,
-        (fetchedData: ConversationObject[]) => setConversations(fetchedData)
+      const unsub = await getConversations(currentUser.uid, (fetchedData: ConversationObject[]) =>
+        setConversations(fetchedData)
       );
 
       if (!unsub) return;
@@ -27,9 +24,7 @@ const ConversationList = () => {
   return (
     <StyledConversationList>
       {conversations.map((conversation: ConversationObject) => {
-        return (
-          <Conversation key={conversation.id} conversation={conversation} />
-        );
+        return <Conversation key={conversation.id} conversation={conversation} />;
       })}
     </StyledConversationList>
   );

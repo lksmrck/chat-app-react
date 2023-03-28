@@ -1,17 +1,14 @@
 import { useLocation, Navigate, Outlet } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
+import useAuth from "../../context/AuthContext";
 import { FC } from "react";
 
-const ProtectedRoutes: FC<{ allowedRights: string[] }> = ({
-  allowedRights,
-}) => {
+const ProtectedRoutes: FC<{ allowedRights: string[] }> = ({ allowedRights }) => {
   const { /* user */ currentUser } = useAuth();
   const location = useLocation();
 
   //TODO: Ověřit, aby nebyl problem, kdyz user v prohlizeci manualne prida do LS key user
 
-  if (!(/* user */ currentUser))
-    return <Navigate to="/login" state={{ from: location }} replace />;
+  if (!(/* user */ currentUser)) return <Navigate to="/login" state={{ from: location }} replace />;
 
   return <Outlet />;
 

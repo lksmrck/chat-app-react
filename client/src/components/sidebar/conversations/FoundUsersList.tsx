@@ -7,7 +7,7 @@ import {
   UserInfoContainer,
 } from "./styled";
 import { UserObject } from "../../../types/types";
-import useAuth from "../../../hooks/useAuth";
+import useAuth from "../../../context/AuthContext";
 import { createConversation } from "../../../api/index";
 
 type FoundUsersResultProps = {
@@ -40,11 +40,9 @@ const FoundUsersList: FC<FoundUsersResultProps> = ({ foundUsers }) => {
     <StyledFoundUsersList>
       {foundUsers.map((foundUser) => {
         return (
-          <StyledFoundUser
-            key={foundUser.uid}
-            onClick={() => foundUserClickHandler(foundUser)}
-          >
+          <StyledFoundUser key={foundUser.uid} onClick={() => foundUserClickHandler(foundUser)}>
             <img
+              alt="profile-pic"
               src={foundUser.photoURL!}
               width="30px"
               style={{ borderRadius: "50%" }}

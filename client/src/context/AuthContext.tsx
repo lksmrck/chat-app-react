@@ -8,14 +8,12 @@ import {
   SetStateAction,
   useEffect,
   FC,
+  useContext,
 } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
-import { User } from "firebase/auth";
 
 interface AuthContextInterface {
-  /* user: UserTypeInLS | null;
-  setUser: Dispatch<SetStateAction<UserTypeInLS | null>>; */
   currentUser: any;
   setCurrentUser: any;
 }
@@ -34,17 +32,9 @@ export const AuthContextProvider: FC<{
     });
   });
 
-  /*  const [user, setUser] = useState(getLocalStorage("user") || null);
-
-  useEffect(() => {
-    localStorage.setItem("user", JSON.stringify(user));
-  }, [user]);
- */
   return (
     <AuthContext.Provider
       value={{
-        /*  user,
-        setUser, */
         currentUser,
         setCurrentUser,
       }}
@@ -53,4 +43,8 @@ export const AuthContextProvider: FC<{
     </AuthContext.Provider>
   );
 };
-export default AuthContext;
+const useAuth = () => {
+  return useContext(AuthContext);
+};
+
+export default useAuth;

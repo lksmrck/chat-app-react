@@ -4,8 +4,6 @@ import { StyledLogin } from "./styled";
 import useUserAuth from "../../hooks/useUserAuth";
 
 const Login = () => {
-  const navigate = useNavigate();
-
   const { googleSignIn } = useUserAuth();
 
   const loginHandler = () => {
