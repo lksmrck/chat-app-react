@@ -1,8 +1,17 @@
-import { createContext, ReactNode, useState, Dispatch, SetStateAction, useEffect, FC } from "react";
+import {
+  createContext,
+  ReactNode,
+  useState,
+  useContext,
+  FC,
+  Dispatch,
+  SetStateAction,
+} from "react";
+import { MessageObject } from "../types/types";
 
 interface MessagesContextInterface {
-  messages: any;
-  setMessages: /* SetStateAction<any>; */ any;
+  messages: MessageObject[];
+  setMessages: Dispatch<SetStateAction<MessageObject[]>>;
 }
 
 const MessagesContext = createContext({} as MessagesContextInterface);
@@ -10,7 +19,7 @@ const MessagesContext = createContext({} as MessagesContextInterface);
 export const MessagesContextProvider: FC<{
   children: ReactNode;
 }> = ({ children }) => {
-  const [messages, setMessages] = useState<any>([]);
+  const [messages, setMessages] = useState<MessageObject[]>([] as MessageObject[]);
 
   return (
     <MessagesContext.Provider
@@ -23,4 +32,8 @@ export const MessagesContextProvider: FC<{
     </MessagesContext.Provider>
   );
 };
-export default MessagesContext;
+const useMessages = () => {
+  return useContext(MessagesContext);
+};
+
+export default useMessages;

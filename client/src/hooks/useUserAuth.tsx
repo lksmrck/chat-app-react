@@ -1,10 +1,5 @@
 import { useState } from "react";
-import {
-  GoogleAuthProvider,
-  signInWithPopup,
-  signInWithRedirect,
-  signOut,
-} from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, signInWithRedirect, signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../constants";
@@ -26,8 +21,6 @@ const useUserAuth = () => {
       createUser({ email, uid, displayName, photoURL });
       navigate(routes.chat);
     });
-
-    //TODO: Vytvořit usera a k němu chat kolekci
   };
 
   const googleSignOut = async () => {

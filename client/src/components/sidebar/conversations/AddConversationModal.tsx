@@ -1,4 +1,4 @@
-import { StyledAddConversationModal, StyledFoundUsersList } from "./styled";
+import { StyledAddConversationModal } from "./styled";
 import {
   Modal,
   ModalOverlay,
@@ -10,21 +10,20 @@ import {
   Button,
   Input,
 } from "@chakra-ui/react";
-import { FC, useState, useEffect } from "react";
+import { FC, useState, useEffect, ChangeEvent } from "react";
 import { findUser } from "../../../api";
 import FoundUsersList from "./FoundUsersList";
+import { theme } from "../../../common/theme";
+import { UserObject } from "../../../types/types";
 
 type AddConversationModalProps = {
   isOpen: boolean;
   onClose: () => void;
 };
 
-const AddConversationModal: FC<AddConversationModalProps> = ({
-  isOpen,
-  onClose,
-}) => {
+const AddConversationModal: FC<AddConversationModalProps> = ({ isOpen, onClose }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [foundUsers, setFoundUsers] = useState<any>([]);
+  const [foundUsers, setFoundUsers] = useState<UserObject[] | []>([]);
 
   useEffect(() => {
     const API_CALL = setTimeout(async () => {
@@ -38,7 +37,7 @@ const AddConversationModal: FC<AddConversationModalProps> = ({
     return () => clearTimeout(API_CALL);
   }, [searchTerm]);
 
-  const inputChangeHandler = (e: any) => {
+  const inputChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
   };
 
@@ -54,14 +53,12 @@ const AddConversationModal: FC<AddConversationModalProps> = ({
               <Input
                 variant="flushed"
                 placeholder="Search for an user..."
-                focusBorderColor="#71AE21"
+                focusBorderColor={theme.color.green}
                 value={searchTerm}
                 onChange={inputChangeHandler}
               />
             </form>
-            {foundUsers.length > 0 && (
-              <FoundUsersList foundUsers={foundUsers} />
-            )}
+            {foundUsers.length > 0 && <FoundUsersList foundUsers={foundUsers} />}
           </ModalBody>
 
           <ModalFooter>

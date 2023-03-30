@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import socket from "../socket";
-import useMessages from "./useMessages";
+import useMessages from "../context/MessagesContext";
+import { MessageObject } from "../types/types";
 
 const useSocket = () => {
   const { setMessages } = useMessages();
@@ -13,7 +14,7 @@ const useSocket = () => {
     });
 
     socket.on("receive_message", (message) => {
-      setMessages((prevMessages: any) => [...prevMessages, message]);
+      setMessages((prevMessages: MessageObject[]) => [...prevMessages, message]);
     });
     return () => {
       socket.off("connect_error");

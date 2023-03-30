@@ -32,6 +32,11 @@ export const StyledMessagesList = styled.div`
     }
   }
 
+  .ScrollToBottomInitial {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
   .ScrollToBottomStyles {
     width: 100%;
     height: 100%;

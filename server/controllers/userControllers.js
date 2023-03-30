@@ -4,6 +4,7 @@ export const createUser = async (req, res) => {
   try {
     const { uid: id, displayName: name, email, photoURL } = req.body;
 
+    console.log(req.body);
     //Check if user is already in DB
     const userAlreadyInDb = await pool.query('SELECT * FROM "user" WHERE id = $1', [id]);
 

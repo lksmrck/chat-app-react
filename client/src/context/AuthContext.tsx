@@ -1,15 +1,6 @@
 import { getLocalStorage } from "../utils/getLocalStorage";
 import { UserTypeInLS } from "../types/types";
-import {
-  createContext,
-  ReactNode,
-  useState,
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  FC,
-  useContext,
-} from "react";
+import { createContext, ReactNode, useState, useEffect, FC, useContext } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 
