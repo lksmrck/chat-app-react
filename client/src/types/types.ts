@@ -20,8 +20,8 @@ export type ConversationObject = {
   id: string;
   member1name: string;
   member1id: string;
-  member1photoUrl: string;
+  member1photourl: string;
   member2name: string;
   member2id: string;
-  member2photoUrl: string;
+  member2photourl: string;
 };

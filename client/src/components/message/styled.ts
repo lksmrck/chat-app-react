@@ -62,13 +62,14 @@ export const StyledMessage = styled.div<StyledMessageProps>`
     props.received ? props.theme.color.receivedMessageBg : props.theme.color.sentMessageBg};
 `;
 
-export const StyledSendTimeBadge = styled.div`
+export const StyledSentMessageBadge = styled.div`
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: ${(props) => props.theme.margin.small};
 `;
 
-export const SendTimeBadgeText = styled.p`
+export const SentMessageBadgeText = styled.p`
   font-size: ${(props) => props.theme.fontSize.xs};
 `;
