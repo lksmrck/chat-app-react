@@ -1,9 +1,9 @@
 import defaultPic from "../../assets/Default_pfp.png";
 import { FC, useEffect, useState } from "react";
 import { StyledSentMessageBadge, SentMessageBadgeText } from "./styled";
-import useConversation from "../../context/ConversationContext";
-import useAuth from "../../context/AuthContext";
-import { getTime } from "../../utils/utils";
+import useConversation from "../../../context/ConversationContext";
+import useAuth from "../../../context/AuthContext";
+import { getTime } from "../../../utils/utils";
 
 type SentMessageBadgeProps = {
   sent?: boolean;

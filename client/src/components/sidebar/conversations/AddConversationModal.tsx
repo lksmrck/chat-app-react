@@ -15,6 +15,7 @@ import { findUser } from "../../../api";
 import FoundUsersList from "./FoundUsersList";
 import { theme } from "../../../common/theme";
 import { UserObject } from "../../../types/types";
+import Spinner from "../../ui/Spinner";
 
 type AddConversationModalProps = {
   isOpen: boolean;
@@ -23,19 +24,30 @@ type AddConversationModalProps = {
 
 const AddConversationModal: FC<AddConversationModalProps> = ({ isOpen, onClose }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [foundUsers, setFoundUsers] = useState<UserObject[] | []>([]);
+  const [foundUsers, setFoundUsers] = useState<UserObject[] | []>([] as UserObject[]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const API_CALL = setTimeout(async () => {
       if (searchTerm.length > 0) {
+        setLoading(true);
         const foundData = await findUser(searchTerm);
-
-        console.log(foundData);
         setFoundUsers(foundData);
+        setLoading(false);
       }
     }, 500);
-    return () => clearTimeout(API_CALL);
+    return () => {
+      clearTimeout(API_CALL);
+    };
   }, [searchTerm]);
+
+  //Clearing state on modal close
+  useEffect(() => {
+    return () => {
+      setFoundUsers([]);
+      setSearchTerm("");
+    };
+  }, [onClose]);
 
   const inputChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
@@ -58,9 +70,8 @@ const AddConversationModal: FC<AddConversationModalProps> = ({ isOpen, onClose }
                 onChange={inputChangeHandler}
               />
             </form>
-            {foundUsers.length > 0 && <FoundUsersList foundUsers={foundUsers} />}
+            {foundUsers.length > 0 && <FoundUsersList foundUsers={foundUsers} loading={loading} />}
           </ModalBody>
-
           <ModalFooter>
             <Button onClick={onClose}>Cancel</Button>
           </ModalFooter>

@@ -9,7 +9,7 @@ interface AuthContextInterface {
   setCurrentUser: any;
 }
 
-const AuthContext = createContext({} as AuthContextInterface);
+export const AuthContext = createContext({} as AuthContextInterface);
 
 export const AuthContextProvider: FC<{
   children: ReactNode;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { DefaultTheme, chatLayout } from "../../common/theme";
+import { DefaultTheme, chatLayout } from "../../../common/theme";
 
 type StyledMessageProps = {
   received?: boolean;

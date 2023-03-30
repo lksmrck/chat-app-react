@@ -1,0 +1,22 @@
+[
+  {
+    "id": "m68omrn18p",
+    "members": ["7sdLnnhMlucSlyvu1Vex4W0iH4f2", "SdMH7Rj5cQRJhuNpvLOVTfv74FR2"],
+    "member1id": "7sdLnnhMlucSlyvu1Vex4W0iH4f2",
+    "member1name": "Lukas Kangaroo",
+    "member1photourl": "https://lh3.googleusercontent.com/a/AGNmyxacbPRsDKosQcyJZ1FUZEIt7uJhnLNHaB4-4I6P=s96-c",
+    "member2id": "SdMH7Rj5cQRJhuNpvLOVTfv74FR2",
+    "member2name": "Jan Novak",
+    "member2photourl": "https://lh3.googleusercontent.com/a/AGNmyxZUcTu4s6ZqzCm7P7OvOzKydaL8nAsfqDnMYuD3dA=s96-c"
+  },
+  {
+    "id": "vee73o258d",
+    "members": ["d0jAuSAGQgPgT3gFRinMNQtfpYT2", "7sdLnnhMlucSlyvu1Vex4W0iH4f2"],
+    "member1id": "d0jAuSAGQgPgT3gFRinMNQtfpYT2",
+    "member1name": "Karel Novak",
+    "member1photourl": "https://lh3.googleusercontent.com/a/AGNmyxY4AAUXnEe1k_sqBYfQlKQ-wg-Yz28L4R43tJMw=s96-c",
+    "member2id": "7sdLnnhMlucSlyvu1Vex4W0iH4f2",
+    "member2name": "David Novotny",
+    "member2photourl": "https://lh3.googleusercontent.com/a/AGNmyxacbPRsDKosQcyJZ1FUZEIt7uJhnLNHaB4-4I6P=s96-c"
+  }
+]

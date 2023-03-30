@@ -21,7 +21,7 @@ export const createUser = async (req, res) => {
 
     /*  res.status("User is already in DB"); */
   } catch (err) {
-    console.log(err);
+    res.status(404).json({ message: err.message });
   }
 };
 
@@ -48,7 +48,7 @@ export const findUsers = async (req, res) => {
       /* res.json(foundUsers.rows); */
     } else res.json({ message: "No such user found." });
   } catch (err) {
-    console.log(err);
+    res.status(404).json({ message: err.message });
   }
 };
 
@@ -62,6 +62,6 @@ export const getUser = async (req, res) => {
     );
     console.log(foundUser);
   } catch (err) {
-    console.log(err);
+    res.status(404).json({ message: err.message });
   }
 };

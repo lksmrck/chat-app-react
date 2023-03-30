@@ -13,7 +13,7 @@ export const getConversations = async (req, res) => {
     /*    console.log(existingConversations); */
     res.status(200).json(existingConversations.rows);
   } catch (error) {
-    res.status(409).json({ message: error.message });
+    res.status(404).json({ message: error.message });
   }
 };
 

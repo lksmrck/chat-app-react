@@ -1,4 +1,4 @@
-import MessagesList from "../message/MessagesList";
+import MessagesList from "./message/MessagesList";
 import SendMessageForm from "./sendMessageForm/SendMessageForm";
 import ChatNavbar from "./ChatNavbar";
 import { StyledChat } from "./styled";
