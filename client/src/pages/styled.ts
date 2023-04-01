@@ -1,19 +1,24 @@
 import styled from "styled-components";
 import { centerItems } from "../common/theme";
+import { device } from "../common/device";
 
 type ContentWrapperProps = {
   flex?: string;
 };
 
 export const ContentContainer = styled.div`
+  width: 85vw;
+  height: 85vh;
   background-color: ${(props) => props.theme.color.blackThree};
-  width: 60vw;
-  height: 80vh;
   border: 1px solid ${(props) => props.theme.color.blackTwo};
   border-radius: ${(props) => props.theme.borderRadius.medium};
   padding: ${(props) => props.theme.padding.small};
   ${(props) => props.theme.shadow.medium};
-  ${centerItems.all}
+  ${centerItems.all};
+
+  @media ${device.md} {
+    width: 60vw;
+  }
 `;
 
 export const ContentWrapper = styled.div<ContentWrapperProps>`
@@ -25,17 +30,27 @@ export const ContentWrapper = styled.div<ContentWrapperProps>`
   height: 100%;
   border-radius: ${(props) => props.theme.borderRadius.small};
   border: 1px solid ${(props) => props.theme.color.green};
+
+  @media ${device.lg} {
+    //TBD
+  }
 `;
 
 export const LoginTitle = styled.h1`
-  /* display: inline-block; */
+  width: 100%;
+  max-width: 580px;
   padding: ${(props) => props.theme.padding.small};
-  font-size: ${(props) => props.theme.fontSize.title};
+  font-size: ${(props) => props.theme.fontSize.titleSm};
+  text-align: center;
   font-weight: 800;
   color: white;
   margin-bottom: ${(props) => props.theme.margin.small};
   border-radius: 40px;
   background-color: ${(props) => props.theme.color.blackTwo};
+
+  @media ${device.md} {
+    //TBD
+  }
 
   .welcome {
     position: relative;

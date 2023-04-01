@@ -7,6 +7,7 @@ import setupTest from "../../../utils/testUtils";
 describe("Conversation list is fetched and rendered properly", () => {
   const currentUser = mockUser;
   const setCurrentUser = jest.fn();
+
   beforeEach(() =>
     setupTest(
       <AuthContext.Provider value={{ currentUser, setCurrentUser }}>

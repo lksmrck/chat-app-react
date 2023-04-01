@@ -1,4 +1,4 @@
-import { StyledSidebarNavbar, Container } from "./styled";
+import { StyledConversationsBarNavbar, Container } from "./styled";
 import { IconButton } from "@chakra-ui/react";
 import { FcExport, FcPlus } from "react-icons/fc";
 import useUserAuth from "../../hooks/useUserAuth";
@@ -6,9 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import AddConversationModal from "./conversations/AddConversationModal";
 
-const SidebarNavbar = () => {
-  const [isAddConversationModalOpen, setIsAddConversationModalOpen] =
-    useState(false);
+const ConversationsBarNavbar = () => {
+  const [isAddConversationModalOpen, setIsAddConversationModalOpen] = useState(false);
 
   const { googleSignOut } = useUserAuth();
   const navigate = useNavigate();
@@ -30,7 +29,7 @@ const SidebarNavbar = () => {
 
   return (
     <>
-      <StyledSidebarNavbar>
+      <StyledConversationsBarNavbar>
         <h1>chitCHAT</h1>
         <Container>
           <IconButton
@@ -46,13 +45,10 @@ const SidebarNavbar = () => {
             onClick={handleSignOut}
           />
         </Container>
-      </StyledSidebarNavbar>
-      <AddConversationModal
-        isOpen={isAddConversationModalOpen}
-        onClose={handleCloseModal}
-      />
+      </StyledConversationsBarNavbar>
+      <AddConversationModal isOpen={isAddConversationModalOpen} onClose={handleCloseModal} />
     </>
   );
 };
 
-export default SidebarNavbar;
+export default ConversationsBarNavbar;

@@ -4,8 +4,12 @@ import setupTest from "../../utils/testUtils";
 
 //TBD
 
-describe("", () => {
-  beforeEach(() => setupTest(<Chat />));
+const handleClickBackToConversations = jest.fn();
+
+describe("TBD", () => {
+  beforeEach(() =>
+    setupTest(<Chat handleClickBackToConversations={handleClickBackToConversations} />)
+  );
 
   test("testing test", () => {
     const linkElement = screen.getByText(/Sent mess/i);

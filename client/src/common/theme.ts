@@ -55,7 +55,8 @@ export const theme: DefaultTheme = {
     m: "1rem" /* 16px */,
     l: "1.125rem" /* 18px */,
     xl: "1.25rem" /* 20px */,
-    title: "2.5rem" /*  40px */,
+    titleLg: "2.5rem" /*  40px */,
+    titleSm: "2rem" /*  32px */,
   },
   margin: {
     xsmall: "0.25em",

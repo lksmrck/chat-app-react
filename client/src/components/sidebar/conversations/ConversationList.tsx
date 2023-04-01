@@ -1,12 +1,14 @@
 import Conversation from "./Conversation";
 import { StyledConversationList } from "./styled";
-import { useEffect, useState } from "react";
+import { useEffect, useState, FC } from "react";
 import useAuth from "../../../context/AuthContext";
 import { getConversations } from "../../../api";
 import { ConversationObject } from "../../../types/types";
 import Spinner from "../../ui/Spinner";
 
-const ConversationList = () => {
+type ConversationList = {};
+
+const ConversationList: FC<ConversationList> = () => {
   const [loading, setLoading] = useState(true);
   const { currentUser } = useAuth();
   const [conversations, setConversations] = useState<ConversationObject[] | []>([]);

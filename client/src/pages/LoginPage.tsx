@@ -9,7 +9,7 @@ const LoginPage = () => {
     <ContentContainer>
       <ContentWrapper flex="column">
         {isLoading ? (
-          <Spinner size={"md"} />
+          <Spinner size={"xl"} />
         ) : (
           <>
             <LoginTitle>

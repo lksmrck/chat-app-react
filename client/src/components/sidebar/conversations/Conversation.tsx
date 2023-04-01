@@ -2,7 +2,7 @@ import { FC } from "react";
 import { ConversationObject } from "../../../types/types";
 import useAuth from "../../../context/AuthContext";
 
-import { StyledConversation, StyledFriendName, StyledPreviewMessage, Container } from "./styled";
+import { StyledConversation, StyledFriendName, Container } from "./styled";
 import useConversation from "../../../context/ConversationContext";
 
 type ConversationProps = {
@@ -29,7 +29,6 @@ const Conversation: FC<ConversationProps> = ({ conversation }) => {
       />
       <Container>
         <StyledFriendName>{eval(`conversation.${friendMemberNumber}name`)}</StyledFriendName>
-        <StyledPreviewMessage>Some messageSOmmeMessage</StyledPreviewMessage>
       </Container>
     </StyledConversation>
   );

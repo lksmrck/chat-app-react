@@ -34,10 +34,6 @@ export const Container = styled.div`
 export const StyledFriendName = styled.h1`
   font-weight: bold;
 `;
-export const StyledPreviewMessage = styled.h3`
-  color: grey;
-  font-size: ${(props) => props.theme.fontSize.s};
-`;
 
 export const StyledAddConversationModal = styled.div``;
 
