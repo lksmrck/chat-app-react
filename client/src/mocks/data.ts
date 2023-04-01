@@ -1,7 +1,7 @@
 export const mockUser = {
-  uid: "7sdLnnhMlucSlyvu1Vex4W0iH4f2",
-  displayName: "Lukas Kangaroo",
-  email: "thatonelukas@gmail.com",
+  uid: "7weiqw96qwkqpkew78qwopq",
+  displayName: "Test User",
+  email: "testuser@gmail.com",
   emailVerified: true,
   isAnonymous: false,
   photoURL:

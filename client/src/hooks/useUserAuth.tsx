@@ -6,27 +6,24 @@ import { routes } from "../constants";
 import { createUser } from "../api";
 
 const useUserAuth = () => {
-  const [isLoading, setIsLoading] = useState();
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const googleSignIn = async () => {
+    setIsLoading(true);
     const provider = new GoogleAuthProvider();
-
     //Google doporučuje signInWithPopup na větších obrazovkách a signInWithRedirect na menších
     await signInWithPopup(auth, provider).then((result) => {
-      /*   const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential?.accessToken; */
       const { email, uid, displayName, photoURL } = result.user;
 
       createUser({ email, uid, displayName, photoURL });
+      setIsLoading(false);
       navigate(routes.chat);
     });
   };
 
-  const googleSignOut = async () => {
-    signOut(auth).then(() => navigate(routes.login));
-  };
+  const googleSignOut = async () => signOut(auth).then(() => navigate(routes.login));
 
-  return { googleSignIn, googleSignOut };
+  return { googleSignIn, googleSignOut, isLoading };
 };
 export default useUserAuth;

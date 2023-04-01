@@ -12,18 +12,24 @@ const ConversationList = () => {
   const [conversations, setConversations] = useState<ConversationObject[] | []>([]);
 
   useEffect(() => {
-    setLoading(true);
+    let sub = true;
     const fetchConversations = async () => {
-      const unsub = await getConversations(currentUser.uid, (fetchedData: ConversationObject[]) => {
-        setConversations(fetchedData);
-        setLoading(false);
-      });
+      setLoading(true);
+      if (sub) {
+        const data = await getConversations(currentUser.uid);
 
-      if (!unsub) return;
-      return () => unsub();
+        setConversations(data);
+        setLoading(false);
+
+        if (!data) return;
+      }
     };
 
     currentUser.uid && fetchConversations();
+
+    return () => {
+      sub = false;
+    };
   }, [currentUser.uid]);
   return (
     <StyledConversationList>

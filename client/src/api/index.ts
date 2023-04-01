@@ -5,13 +5,11 @@ import { ConversationObject } from "../types/types";
 const API = axios.create({ baseURL: "http://localhost:8000" });
 
 //DONE, TODO: upravit callback type
-export const getConversations = async (
-  userId: string,
-  callback: any /* (conversations: ConversationObject[]) => () => void */
-) => {
+export const getConversations = async (userId: string) => {
   try {
     const res = await API.get("/conversations/" + userId);
-    return callback(res.data); //???
+    /*     return callback(res.data); //??? */
+    return res.data;
   } catch (err) {
     console.log(err);
   }
