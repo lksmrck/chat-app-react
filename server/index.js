@@ -14,6 +14,7 @@ app.use(cors());
 
 const PORT = /* process.env.PORT ||  */ 8000;
 
+app.use(express.json());
 app.use("/", routes);
 
 //Create HTTP server with Express

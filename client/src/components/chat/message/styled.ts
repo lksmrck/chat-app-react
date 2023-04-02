@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { DefaultTheme, chatLayout } from "../../../common/theme";
+import { DefaultTheme, chatLayout, centerItems } from "../../../common/theme";
 
 type StyledMessageProps = {
   received?: boolean;
@@ -72,4 +72,14 @@ export const StyledSentMessageBadge = styled.div`
 
 export const SentMessageBadgeText = styled.p`
   font-size: ${(props) => props.theme.fontSize.xs};
+`;
+
+export const MessagesListErrorMessage = styled.div`
+  height: 100%;
+  ${centerItems.all};
+  color: red;
+  font-size: ${(props) => props.theme.fontSize.sm};
+  h3 {
+    margin: 0 ${(props) => props.theme.margin.small};
+  }
 `;

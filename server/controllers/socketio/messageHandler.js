@@ -10,7 +10,7 @@ const messageHandler = async (socket, message) => {
     );
     socket.to(message.conversation_id).emit("receive_message", newMessage.rows[0]);
   } catch (error) {
-    //TODO: handler error
+    res.status(404).json({ message: error.message });
   }
 };
 

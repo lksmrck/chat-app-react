@@ -10,16 +10,19 @@ import { UserObject } from "../../../types/types";
 import useAuth from "../../../context/AuthContext";
 import { createConversation } from "../../../api/index";
 import Spinner from "../../ui/Spinner";
+import useConversation from "../../../context/ConversationContext";
 
 type FoundUsersResultProps = {
   foundUsers: UserObject[] | [];
   loading: boolean;
+  onModalClose: () => void;
 };
 
-const FoundUsersList: FC<FoundUsersResultProps> = ({ foundUsers, loading }) => {
+const FoundUsersList: FC<FoundUsersResultProps> = ({ foundUsers, loading, onModalClose }) => {
   const { currentUser } = useAuth();
+  const { currentConversation, setCurrentConversation } = useConversation();
 
-  const foundUserClickHandler = (foundUser: UserObject) => {
+  const foundUserClickHandler = async (foundUser: UserObject) => {
     const usersData = {
       searchingUserId: currentUser.uid,
       searchingUserName: currentUser.displayName,
@@ -30,7 +33,9 @@ const FoundUsersList: FC<FoundUsersResultProps> = ({ foundUsers, loading }) => {
     };
 
     /* createConversation(usersIdData); */
-    createConversation(usersData);
+    const clickedConversation = await createConversation(usersData);
+    setCurrentConversation(clickedConversation);
+    onModalClose();
   };
 
   return (

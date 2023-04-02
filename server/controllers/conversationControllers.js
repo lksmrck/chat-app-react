@@ -51,8 +51,8 @@ export const createConversation = async (req, res) => {
           foundUserPhotoUrl,
         ]
       );
-      res.status(201).json(newConversation.rows);
-    } else res.json({ message: "Conversation already exists!" });
+      res.status(201).json(newConversation.rows[0]);
+    } else res.status(200).json(existingConversation.rows[0]);
   } catch (error) {
     res.status(409).json({ message: error.message });
   }

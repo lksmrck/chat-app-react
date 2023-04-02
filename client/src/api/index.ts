@@ -4,33 +4,21 @@ import { ConversationObject } from "../types/types";
 
 const API = axios.create({ baseURL: "http://localhost:8000" });
 
-//DONE, TODO: upravit callback type
 export const getConversations = async (userId: string) => {
-  try {
-    const res = await API.get("/conversations/" + userId);
-    /*     return callback(res.data); //??? */
-    return res.data;
-  } catch (err) {
-    console.log(err);
-  }
+  const res = await API.get("/conversations/" + userId);
+  return res.data;
 };
 //DONE, TODO: upravit callback type
-export const getMessages = async (conversationID: string, callback: any) => {
-  try {
-    const res = await API.get("/messages/" + conversationID); //
-    return callback(res.data);
-  } catch (err) {
-    console.log(err);
-  }
+export const getMessages = async (conversationID: string) => {
+  const res = await API.get("/messages/" + conversationID); //
+  return res.data;
 };
 
 //DONE
-export const createConversation = async (
-  /* usersId: {searchingUserId: string, foundUserId: string} */ usersObject: any
-) => {
+export const createConversation = async (usersObject: any) => {
   try {
-    const res = await API.post("/conversations", /* usersId */ usersObject);
-    console.log(res.data);
+    const res = await API.post("/conversations", usersObject);
+    return res.data;
   } catch (err) {
     console.log(err);
   }
@@ -39,28 +27,29 @@ export const createConversation = async (
 //Přidání nové konverzace po kliknutí na + button v navbaru
 //DONE
 export const findUser = async (email: string) => {
-  try {
-    const res = await API.get("/users/" + email);
-    return res.data;
-    /* console.log(res.data) */
-  } catch (err) {
+  /*   try { */
+  const res = await API.get("/users/" + email);
+  return res.data;
+  /* console.log(res.data) */
+  /*  } catch (err) {
     console.log(err);
-  }
+  } */
 };
 
 //TBD
-export const getUser = async (userId: string) => {
-  try {
-    const res = await API.get("/users/" + userId); //   /users/:id
-  } catch (err) {
-    console.log(err);
-  }
-};
+// export const getUser = async (userId: string) => {
+//   try {
+//     /*     const res =  */ await API.get("/users/" + userId);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
+
 //DONE
 export const createUser = async (user: UserObject) => {
   try {
-    const res = await API.post("/users", user);
-    console.log(res);
+    console.log(user);
+    /*   const res = */ await API.post("/users", user);
   } catch (err) {
     console.log(err);
   }

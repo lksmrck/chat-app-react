@@ -9,6 +9,8 @@ import {
   ModalCloseButton,
   Button,
   Input,
+  FormControl,
+  FormErrorMessage,
 } from "@chakra-ui/react";
 import { FC, useState, useEffect, ChangeEvent } from "react";
 import { findUser } from "../../../api";
@@ -26,14 +28,21 @@ const AddConversationModal: FC<AddConversationModalProps> = ({ isOpen, onClose }
   const [searchTerm, setSearchTerm] = useState("");
   const [foundUsers, setFoundUsers] = useState<UserObject[] | []>([] as UserObject[]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState({ isError: false, message: "" });
 
   useEffect(() => {
+    if (searchTerm.length === 0) setFoundUsers([]);
+
     const API_CALL = setTimeout(async () => {
       if (searchTerm.length > 0) {
         setLoading(true);
-        const foundData = await findUser(searchTerm);
-        setFoundUsers(foundData);
-        setLoading(false);
+        try {
+          const foundData = await findUser(searchTerm);
+          setFoundUsers(foundData);
+          setLoading(false);
+        } catch (error) {
+          setError({ isError: true, message: "No such user found." });
+        }
       }
     }, 500);
     return () => {
@@ -46,10 +55,12 @@ const AddConversationModal: FC<AddConversationModalProps> = ({ isOpen, onClose }
     return () => {
       setFoundUsers([]);
       setSearchTerm("");
+      setError({ isError: false, message: "" });
     };
   }, [onClose]);
 
   const inputChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setError({ isError: false, message: "" });
     setSearchTerm(e.target.value);
   };
 
@@ -61,16 +72,20 @@ const AddConversationModal: FC<AddConversationModalProps> = ({ isOpen, onClose }
           <ModalHeader>Create new conversation</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={32}>
-            <form>
+            <FormControl isInvalid={error.isError}>
               <Input
                 variant="flushed"
-                placeholder="Search for an user..."
+                type="email"
+                placeholder="Start typing users email..."
                 focusBorderColor={theme.color.green}
                 value={searchTerm}
                 onChange={inputChangeHandler}
               />
-            </form>
-            {foundUsers.length > 0 && <FoundUsersList foundUsers={foundUsers} loading={loading} />}
+              <FormErrorMessage>{error.message}</FormErrorMessage>
+            </FormControl>
+            {foundUsers.length > 0 && (
+              <FoundUsersList foundUsers={foundUsers} loading={loading} onModalClose={onClose} />
+            )}
           </ModalBody>
           <ModalFooter>
             <Button onClick={onClose}>Cancel</Button>

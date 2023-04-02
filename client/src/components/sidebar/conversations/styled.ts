@@ -76,3 +76,13 @@ export const StyledUserEmail = styled.h3`
   margin-left: ${(props) => props.theme.margin.small};
   line-height: 0.8rem;
 `;
+
+export const ConversationsErrorMessage = styled.div`
+  height: 100%;
+  ${centerItems.all};
+  color: red;
+  font-size: ${(props) => props.theme.fontSize.sm};
+  h3 {
+    margin: 0 ${(props) => props.theme.margin.small};
+  }
+`;

@@ -10,40 +10,59 @@ import useMessages from "../../../context/MessagesContext";
 import ScrollToBottom from "react-scroll-to-bottom";
 import { MessageObject } from "../../../types/types";
 import Spinner from "../../ui/Spinner";
+import { MessagesListErrorMessage } from "./styled";
 
 const MessagesList = () => {
   const { messages, setMessages } = useMessages();
   const { currentUser } = useAuth();
   const { currentConversation } = useConversation();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState({ isError: false, message: "" });
 
+  //Initialization connection
   useSocket();
 
   useEffect(() => {
     setLoading(true);
+    let sub = true;
     const joinChat = () => {
       socket.emit("join_chat", currentConversation.id);
     };
 
     const fetchMessages = async () => {
       joinChat();
-      const unsub = await getMessages(
-        currentConversation.id,
-        (fetchedMessages: MessageObject[]) => {
-          setMessages(fetchedMessages);
+
+      try {
+        if (sub) {
+          const data = await getMessages(currentConversation.id);
+
+          setMessages(data);
           setLoading(false);
+
+          if (!data) return;
         }
-      );
-      return () => unsub();
+      } catch (error) {
+        console.log("ERROR");
+        setLoading(false);
+        setError({ isError: true, message: "Messages could not be fetched." });
+      }
     };
 
     currentConversation.id && fetchMessages();
+
+    return () => {
+      sub = false;
+    };
   }, [currentConversation, setMessages]);
 
   return (
     <StyledMessagesList>
       {loading && currentConversation.id ? (
         <Spinner size={"xl"} />
+      ) : error.isError ? (
+        <MessagesListErrorMessage>
+          <h3>{error.message}</h3>
+        </MessagesListErrorMessage>
       ) : (
         <ScrollToBottom
           className="ScrollToBottomStyles"

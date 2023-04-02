@@ -2,9 +2,9 @@ import pool from "../db.js";
 
 export const createUser = async (req, res) => {
   try {
+    console.log(req.body);
     const { uid: id, displayName: name, email, photoURL } = req.body;
 
-    console.log(req.body);
     //Check if user is already in DB
     const userAlreadyInDb = await pool.query('SELECT * FROM "user" WHERE id = $1', [id]);
 
@@ -18,8 +18,6 @@ export const createUser = async (req, res) => {
     } else {
       res.status(200).json({ message: "User is already in DB" });
     }
-
-    /*  res.status("User is already in DB"); */
   } catch (err) {
     res.status(404).json({ message: err.message });
   }
@@ -45,14 +43,15 @@ export const findUsers = async (req, res) => {
       });
 
       res.json(foundUsersAdjusted);
-      /* res.json(foundUsers.rows); */
-    } else res.json({ message: "No such user found." });
+    } else {
+      res.status(404).json({ message: "No such user found." });
+    }
   } catch (err) {
     res.status(404).json({ message: err.message });
   }
 };
 
-export const getUser = async (req, res) => {
+/* export const getUser = async (req, res) => {
   try {
     const { email } = req.params;
 
@@ -64,4 +63,4 @@ export const getUser = async (req, res) => {
   } catch (err) {
     res.status(404).json({ message: err.message });
   }
-};
+}; */
