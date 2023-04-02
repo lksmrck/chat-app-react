@@ -14,7 +14,7 @@ interface MessagesContextInterface {
   setMessages: Dispatch<SetStateAction<MessageObject[]>>;
 }
 
-const MessagesContext = createContext({} as MessagesContextInterface);
+export const MessagesContext = createContext({} as MessagesContextInterface);
 
 export const MessagesContextProvider: FC<{
   children: ReactNode;

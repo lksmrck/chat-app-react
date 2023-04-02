@@ -37,9 +37,9 @@ const MessagesList = () => {
           const data = await getMessages(currentConversation.id);
 
           setMessages(data);
-          setLoading(false);
 
           if (!data) return;
+          setLoading(false);
         }
       } catch (error) {
         console.log("ERROR");
@@ -52,6 +52,7 @@ const MessagesList = () => {
 
     return () => {
       sub = false;
+      setLoading(false);
     };
   }, [currentConversation, setMessages]);
 
@@ -81,6 +82,7 @@ const MessagesList = () => {
                   sent={isSent}
                   received={!isSent}
                   time={message.time}
+                  data-testid="message-component"
                 />
               );
             })}

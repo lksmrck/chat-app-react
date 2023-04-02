@@ -4,7 +4,7 @@ export type MessageObject = {
   sender_id: string;
   receiver_id: string;
   text: string;
-  time: Date;
+  time: Date | string;
   conversation_id: string;
 };
 

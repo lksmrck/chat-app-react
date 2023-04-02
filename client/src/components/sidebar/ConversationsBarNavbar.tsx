@@ -10,14 +10,13 @@ const ConversationsBarNavbar = () => {
   const [isAddConversationModalOpen, setIsAddConversationModalOpen] = useState(false);
 
   const { googleSignOut } = useUserAuth();
-  const navigate = useNavigate();
 
   const handleSignOut = async () => {
-    try {
-      googleSignOut();
-    } catch (error) {
+    /*    try { */
+    googleSignOut();
+    /*    } catch (error) {
       console.log(error);
-    }
+    }*/
   };
 
   const handleOpenModal = () => {

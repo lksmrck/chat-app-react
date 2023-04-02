@@ -14,7 +14,7 @@ interface ConversationContextInterface {
   setCurrentConversation: Dispatch<SetStateAction<ConversationObject>>;
 }
 
-const ConversationContext = createContext({} as ConversationContextInterface);
+export const ConversationContext = createContext({} as ConversationContextInterface);
 
 export const ConversationContextProvider: FC<{
   children: ReactNode;

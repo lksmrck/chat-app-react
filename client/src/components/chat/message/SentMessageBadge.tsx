@@ -8,7 +8,7 @@ import { getTime } from "../../../utils/utils";
 type SentMessageBadgeProps = {
   sent?: boolean;
   received?: boolean;
-  time: Date;
+  time: Date | string;
 };
 
 const SentMessageBadge: FC<SentMessageBadgeProps> = ({ sent, received, time }) => {
