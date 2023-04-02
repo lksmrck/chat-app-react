@@ -14,6 +14,7 @@ const Conversation: FC<ConversationProps> = ({ conversation }) => {
   const { setCurrentConversation } = useConversation();
 
   const friendMemberNumber = currentUser.uid === conversation.member1id ? "member2" : "member1";
+  console.log(conversation.member2photourl);
 
   const conversationClickHandler = () => {
     setCurrentConversation(conversation);
@@ -22,7 +23,7 @@ const Conversation: FC<ConversationProps> = ({ conversation }) => {
   return (
     <StyledConversation onClick={conversationClickHandler}>
       <img
-        alt="profile-pic"
+        alt="img"
         src={eval(`conversation.${friendMemberNumber}photourl`)}
         width="50px"
         style={{ borderRadius: "50%" }}

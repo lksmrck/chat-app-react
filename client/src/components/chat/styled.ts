@@ -2,14 +2,22 @@ import styled from "styled-components";
 import { chatLayout } from "../../common/theme";
 import { device } from "../../common/device";
 
-export const StyledChat = styled.div`
-  flex: 2;
+type ChatProps = {
+  showChat?: boolean;
+};
+
+export const StyledChat = styled.div<ChatProps>`
+  width: 100%;
   height: 100%;
+  display: block;
+
+  @media ${device.md} {
+    width: 66.6%;
+    ${({ showChat }) => (showChat ? "display: block" : "display: none")};
+  }
 `;
 
 export const StyledChatNavbar = styled.nav`
-  /*   display: flex;
-  align-items: center; */
   background-color: ${(props) => props.theme.color.blackOne};
   width: 100%;
   height: ${chatLayout.chatTitleHeight};

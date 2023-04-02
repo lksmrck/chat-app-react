@@ -27,13 +27,8 @@ export const createConversation = async (usersObject: any) => {
 //Přidání nové konverzace po kliknutí na + button v navbaru
 //DONE
 export const findUser = async (email: string) => {
-  /*   try { */
   const res = await API.get("/users/" + email);
   return res.data;
-  /* console.log(res.data) */
-  /*  } catch (err) {
-    console.log(err);
-  } */
 };
 
 //TBD

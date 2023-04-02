@@ -9,10 +9,13 @@ import useConversation from "../context/ConversationContext";
 const MainPage = () => {
   const [minMediumScreen] = useMediaQuery(device.md);
   const [smDeviceScreen, setSmDeviceScreen] = useState("CONVERSATIONS");
+  const [showChat, setShowChat] = useState(false);
+
   const { currentConversation } = useConversation();
 
   useEffect(() => {
-    if (currentConversation.id) setSmDeviceScreen("CHAT");
+    if (currentConversation.id && minMediumScreen) setShowChat(true);
+    if (currentConversation.id && !minMediumScreen) setSmDeviceScreen("CHAT");
   }, [currentConversation]);
 
   const handleClickBackToConversations = (screen: string) => setSmDeviceScreen(screen);
@@ -22,8 +25,11 @@ const MainPage = () => {
       <ContentWrapper>
         {minMediumScreen && (
           <>
-            <ConversationsBar />
-            <Chat handleClickBackToConversations={handleClickBackToConversations} />
+            <ConversationsBar widthAnimation={showChat} />
+            <Chat
+              handleClickBackToConversations={handleClickBackToConversations}
+              showChat={showChat}
+            />
           </>
         )}
         {!minMediumScreen && smDeviceScreen === "CONVERSATIONS" && <ConversationsBar />}

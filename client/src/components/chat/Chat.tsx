@@ -7,11 +7,12 @@ import { FC } from "react";
 
 type ChatProps = {
   handleClickBackToConversations: (screen: string) => void;
+  showChat?: boolean;
 };
 
-const Chat: FC<ChatProps> = ({ handleClickBackToConversations }) => {
+const Chat: FC<ChatProps> = ({ handleClickBackToConversations, showChat }) => {
   return (
-    <StyledChat>
+    <StyledChat showChat={showChat}>
       <ChatNavbar handleClickBackToConversations={handleClickBackToConversations} />
       <MessagesContextProvider>
         <MessagesList />

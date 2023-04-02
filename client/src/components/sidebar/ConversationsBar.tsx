@@ -7,11 +7,13 @@ import Search from "./Search";
 import ConversationList from "./conversations/ConversationList";
 import { FC } from "react";
 
-type ConversationBarProps = {};
+type ConversationBarProps = {
+  widthAnimation?: boolean;
+};
 
-const ConversationsBar: FC<ConversationBarProps> = () => {
+const ConversationsBar: FC<ConversationBarProps> = ({ widthAnimation }) => {
   return (
-    <StyledConversationsBar>
+    <StyledConversationsBar widthAnimation={widthAnimation}>
       <Navbar />
       <Search />
       <ConversationList />

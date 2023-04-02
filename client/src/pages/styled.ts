@@ -38,7 +38,7 @@ export const ContentWrapper = styled.div<ContentWrapperProps>`
 
 export const LoginTitle = styled.h1`
   width: 100%;
-  max-width: 580px;
+  max-width: 320px;
   padding: ${(props) => props.theme.padding.small};
   font-size: ${(props) => props.theme.fontSize.titleSm};
   text-align: center;
@@ -48,8 +48,8 @@ export const LoginTitle = styled.h1`
   border-radius: 40px;
   background-color: ${(props) => props.theme.color.blackTwo};
 
-  @media ${device.md} {
-    //TBD
+  @media ${device.lg} {
+    max-width: 580px;
   }
 
   .welcome {
