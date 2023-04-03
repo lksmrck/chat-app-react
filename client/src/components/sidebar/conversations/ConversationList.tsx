@@ -6,12 +6,16 @@ import { getConversations } from "../../../api";
 import { ConversationObject } from "../../../types/types";
 import Spinner from "../../ui/Spinner";
 
-type ConversationList = {};
+type ConversationList = {
+  conversationSearchTerm: string;
+};
 
-const ConversationList: FC<ConversationList> = () => {
+const ConversationList: FC<ConversationList> = ({ conversationSearchTerm }) => {
   const [loading, setLoading] = useState(true);
   const { currentUser } = useAuth();
-  const [conversations, setConversations] = useState<ConversationObject[] | []>([]);
+  const [allConversations, setAllConversations] = useState<ConversationObject[] | []>([]);
+  const [filteredConversations, setFilteredConversations] = useState<ConversationObject[] | []>([]);
+  /*      () => conversations */
   const [error, setError] = useState({ isError: false, message: "" });
 
   useEffect(() => {
@@ -22,8 +26,8 @@ const ConversationList: FC<ConversationList> = () => {
       try {
         if (sub) {
           const data = await getConversations(currentUser.uid);
-
-          setConversations(data);
+          setAllConversations(data);
+          setFilteredConversations(data);
           setLoading(false);
 
           if (!data) return;
@@ -40,6 +44,22 @@ const ConversationList: FC<ConversationList> = () => {
       sub = false;
     };
   }, [currentUser.uid]);
+
+  useEffect(() => {
+    if (conversationSearchTerm.length === 0) setFilteredConversations(allConversations);
+
+    const filteredArray = allConversations.filter((conversation) => {
+      const otherMemberName =
+        currentUser.uid === conversation.member1id
+          ? conversation.member2name
+          : conversation.member1name;
+
+      return otherMemberName.toLowerCase().includes(conversationSearchTerm.toLowerCase());
+    });
+
+    setFilteredConversations(filteredArray);
+  }, [conversationSearchTerm]);
+
   return (
     <StyledConversationList>
       {loading ? (
@@ -49,7 +69,7 @@ const ConversationList: FC<ConversationList> = () => {
           <h3>{error.message}</h3>
         </ConversationsErrorMessage>
       ) : (
-        conversations.map((conversation: ConversationObject) => {
+        filteredConversations.map((conversation: ConversationObject) => {
           return <Conversation key={conversation.id} conversation={conversation} />;
         })
       )}

@@ -5,18 +5,24 @@ import { StyledConversationsBar } from "./styled";
 import Navbar from "./ConversationsBarNavbar";
 import Search from "./Search";
 import ConversationList from "./conversations/ConversationList";
-import { FC } from "react";
+import { FC, useState, ChangeEvent } from "react";
 
 type ConversationBarProps = {
   widthAnimation?: boolean;
 };
 
 const ConversationsBar: FC<ConversationBarProps> = ({ widthAnimation }) => {
+  const [conversationSearchTerm, setConversationSearchTerm] = useState("");
+
+  const handleChangeConversationSearchTerm = (e: ChangeEvent<HTMLInputElement>) => {
+    setConversationSearchTerm(e.target.value);
+  };
+
   return (
     <StyledConversationsBar widthAnimation={widthAnimation}>
       <Navbar />
-      <Search />
-      <ConversationList />
+      <Search handleChangeConversationSearchTerm={handleChangeConversationSearchTerm} />
+      <ConversationList conversationSearchTerm={conversationSearchTerm} />
     </StyledConversationsBar>
   );
 };
