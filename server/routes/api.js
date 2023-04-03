@@ -16,6 +16,6 @@ router.get("/conversations/:userID", getConversations);
 
 router.post("/users", createUser);
 
-router.get("/users/:email", findUsers);
+router.post("/users/:email", findUsers);
 
 export default router;

@@ -26,7 +26,7 @@ const ChatNavbar: FC<ChatNavbarProps> = ({ handleClickBackToConversations }) => 
     <StyledChatNavbar>
       {currentConversation.id && (
         <Container>
-          <div>
+          <div className="navbar-data">
             <img
               alt="profile-pic"
               width="30px"

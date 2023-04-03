@@ -17,7 +17,7 @@ import { findUser } from "../../../api";
 import FoundUsersList from "./FoundUsersList";
 import { theme } from "../../../common/theme";
 import { UserObject } from "../../../types/types";
-import Spinner from "../../ui/Spinner";
+import useAuth from "../../../context/AuthContext";
 
 type AddConversationModalProps = {
   isOpen: boolean;
@@ -30,6 +30,8 @@ const AddConversationModal: FC<AddConversationModalProps> = ({ isOpen, onClose }
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({ isError: false, message: "" });
 
+  const { currentUser } = useAuth();
+
   useEffect(() => {
     if (searchTerm.length === 0) setFoundUsers([]);
 
@@ -37,7 +39,7 @@ const AddConversationModal: FC<AddConversationModalProps> = ({ isOpen, onClose }
       if (searchTerm.length > 0) {
         setLoading(true);
         try {
-          const foundData = await findUser(searchTerm);
+          const foundData = await findUser(searchTerm, currentUser.uid);
           setFoundUsers(foundData);
           setLoading(false);
         } catch (error) {

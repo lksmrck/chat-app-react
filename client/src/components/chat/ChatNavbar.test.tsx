@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Chat from "./Chat";
+import ChatNavbar from "./ChatNavbar";
 import setupTest from "../../utils/testUtils";
 
 //TBD
@@ -8,12 +8,11 @@ const handleClickBackToConversations = jest.fn();
 
 describe("TBD", () => {
   beforeEach(() =>
-    setupTest(<Chat handleClickBackToConversations={handleClickBackToConversations} />)
+    setupTest(<ChatNavbar handleClickBackToConversations={handleClickBackToConversations} />)
   );
 
   test("chat bar displays users name", () => {
-    const linkElement = screen.getByText(/Test User/i);
+    const linkElement = screen.getByText(/Karel Novak/i);
     expect(linkElement).toBeInTheDocument();
   });
-  //TEST PŘESUNUT DO CHATNAVBAR.TEST.TSX
 });

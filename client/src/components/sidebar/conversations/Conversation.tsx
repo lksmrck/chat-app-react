@@ -14,7 +14,6 @@ const Conversation: FC<ConversationProps> = ({ conversation }) => {
   const { setCurrentConversation } = useConversation();
 
   const friendMemberNumber = currentUser.uid === conversation.member1id ? "member2" : "member1";
-  console.log(conversation.member2photourl);
 
   const conversationClickHandler = () => {
     setCurrentConversation(conversation);

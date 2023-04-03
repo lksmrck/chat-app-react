@@ -26,14 +26,17 @@ export const createUser = async (req, res) => {
 export const findUsers = async (req, res) => {
   try {
     const { email } = req.params;
-    //Find user which email contains the req.params string (can be partial)
+    const { searchingUserID } = req.body;
+    console.log(searchingUserID);
+
+    //Find user which email contains the req.params string (can be partial) EXCEPT the user, who sent the request (his ID included in the req.body)
     const foundUsers = await pool.query(
-      'SELECT * FROM "user" WHERE position($1 in LOWER(email))>0',
-      [email]
+      'SELECT * FROM "user" WHERE position($1 in LOWER(email))>0 EXCEPT SELECT * FROM "user" WHERE id = $2',
+      [email, searchingUserID]
     );
-    //If such users found, returns an array of users. Otherwise returns 404
+
     if (foundUsers.rowCount > 0) {
-      //Modify key names
+      //Modify key names for the response
       const foundUsersAdjusted = foundUsers.rows.map((user) => {
         return {
           displayName: user.name,
@@ -50,17 +53,3 @@ export const findUsers = async (req, res) => {
     res.status(404).json({ message: err.message });
   }
 };
-
-/* export const getUser = async (req, res) => {
-  try {
-    const { email } = req.params;
-
-    const foundUser = await pool.query(
-      'SELECT * FROM "user" WHERE $1 LIKE "%" || LOWER(email) || "%"',
-      [email]
-    );
-    console.log(foundUser);
-  } catch (err) {
-    res.status(404).json({ message: err.message });
-  }
-}; */

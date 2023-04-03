@@ -52,7 +52,6 @@ const MessagesList = () => {
 
     return () => {
       sub = false;
-      setLoading(false);
     };
   }, [currentConversation, setMessages]);
 

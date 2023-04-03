@@ -23,7 +23,6 @@ export const AuthContextProvider: FC<{
     });
 
     return () => {
-      //Unsubscribe
       unsub();
     };
   }, []);
