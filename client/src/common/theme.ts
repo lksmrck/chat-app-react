@@ -34,8 +34,7 @@ export const theme: DefaultTheme = {
     blackTwo: "#1c1c1c",
     blackThree: "#363636",
 
-    /*  green: "#71AE21", //Použije se? */
-    green: "#64cfc1", //Použije se?
+    green: "#64cfc1",
 
     //Messages
     sentMessageBg: "#ffd6ff",

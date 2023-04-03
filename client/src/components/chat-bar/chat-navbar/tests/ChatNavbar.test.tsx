@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import ChatNavbar from "../ChatNavbar";
-import setupTest from "../../../utils/testUtils";
+import setupTest from "../../../../utils/testUtils";
 
 //TBD
 

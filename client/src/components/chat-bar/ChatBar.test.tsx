@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Chat from "./Chat";
+import Chat from "./ChatBar";
 import setupTest from "../../utils/testUtils";
 
 //TBD

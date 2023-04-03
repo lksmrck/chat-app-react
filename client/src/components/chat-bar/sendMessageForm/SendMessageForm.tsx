@@ -2,11 +2,13 @@ import { StyledForm } from "./styled";
 import { Button, Input } from "@chakra-ui/react";
 import { useState, ChangeEvent, FormEvent } from "react";
 import useAuth from "../../../context/AuthContext";
-import socket from "../../../socket";
+import socket from "../../../setups/socket";
 import useMessages from "../../../context/MessagesContext";
 import useConversation from "../../../context/ConversationContext";
 import { theme } from "../../../common/theme";
 import { MessageObject } from "../../../types/types";
+import { IconButton } from "@chakra-ui/react";
+import { FcNext } from "react-icons/fc";
 
 const SendMessageForm = () => {
   const [message, setMessage] = useState("");
@@ -50,9 +52,13 @@ const SendMessageForm = () => {
         style={{ width: "80%", marginLeft: "1em" }}
         borderRadius={18}
       />
-      <Button colorScheme="teal" type="submit">
-        Send
-      </Button>
+      <IconButton
+        colorScheme="yellow"
+        type="submit"
+        size="sm"
+        aria-label="add conversation"
+        icon={<FcNext size={22} color="white" />}
+      />
     </StyledForm>
   );
 };

@@ -1,7 +1,7 @@
-import MessagesList from "./MessagesList";
-import setupTest from "../../../utils/testUtils";
+import MessagesList from "../MessagesList";
+import setupTest from "../../../../utils/testUtils";
 import { screen } from "@testing-library/react";
-import { theme } from "../../../common/theme";
+import { theme } from "../../../../common/theme";
 
 describe("MessagesList renders correct elements", () => {
   beforeEach(() => setupTest(<MessagesList />));
@@ -13,8 +13,7 @@ describe("MessagesList renders correct elements", () => {
  */
 
   test("displays correct number of messages fetched from the server", async () => {
-    const messages = screen.getAllByTestId("styled-message");
+    const messages = await screen.findAllByTestId("styled-message");
     expect(messages).toHaveLength(5);
-    //FIXME: zaseknuto na loadingu
   });
 });

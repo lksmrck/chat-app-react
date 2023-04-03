@@ -1,5 +1,5 @@
 import { Input, InputLeftElement, InputGroup } from "@chakra-ui/react";
-import { StyledSearch } from "./styled";
+import { StyledSearch } from "../styled";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FC, ChangeEvent } from "react";
 

@@ -58,6 +58,7 @@ const setupTest = (component: ReactElement) => {
 
 export default setupTest;
 
+//Chakra UI theme
 beforeEach(() => {
   Object.defineProperty(window, "matchMedia", {
     writable: true,

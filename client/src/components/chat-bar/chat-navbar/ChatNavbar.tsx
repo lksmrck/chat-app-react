@@ -1,8 +1,8 @@
-import { StyledChatNavbar, Container, ChatNavbarName } from "./styled";
-import useConversation from "../../context/ConversationContext";
-import useAuth from "../../context/AuthContext";
+import { StyledChatNavbar, Container, ChatNavbarName } from "../styled";
+import useConversation from "../../../context/ConversationContext";
+import useAuth from "../../../context/AuthContext";
 import { useMediaQuery } from "@chakra-ui/react";
-import { device } from "../../common/device";
+import { device } from "../../../common/device";
 import { IconButton } from "@chakra-ui/react";
 import { FcDownLeft } from "react-icons/fc";
 import { FC } from "react";

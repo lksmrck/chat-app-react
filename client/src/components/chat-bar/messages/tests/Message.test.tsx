@@ -1,7 +1,7 @@
-import Message from "./Message";
-import setupTest from "../../../utils/testUtils";
+import Message from "../Message";
+import setupTest from "../../../../utils/testUtils";
 import { screen } from "@testing-library/react";
-import { theme } from "../../../common/theme";
+import { theme } from "../../../../common/theme";
 
 describe("Message displays correct data", () => {
   const mockDate = new Date();

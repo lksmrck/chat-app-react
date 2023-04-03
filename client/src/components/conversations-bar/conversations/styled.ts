@@ -35,16 +35,23 @@ export const StyledFriendName = styled.h1`
   font-weight: bold;
 `;
 
-export const StyledAddConversationModal = styled.div``;
+export const StyledAddConversationModal = styled.div`
+  .input {
+    position: relative;
+  }
+`;
 
 export const StyledFoundUsersList = styled.div`
   height: min-content;
+  width: 89.3%;
   max-height: 10rem;
   border-bottom-right-radius: ${(props) => props.theme.borderRadius.small};
   border-bottom-left-radius: ${(props) => props.theme.borderRadius.small};
   border: 1px solid #a2a2a2;
   padding-bottom: ${(props) => props.theme.padding.xsmall};
   padding-top: ${(props) => props.theme.padding.xsmall};
+  z-index: 10;
+  position: absolute;
 `;
 
 export const StyledFoundUser = styled.div`

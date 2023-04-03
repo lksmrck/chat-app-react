@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import useConversation from "../../../context/ConversationContext";
 import useAuth from "../../../context/AuthContext";
 import { getMessages } from "../../../api";
-import socket from "../../../socket";
+import socket from "../../../setups/socket";
 import useSocket from "../../../hooks/useSocket";
 import useMessages from "../../../context/MessagesContext";
 import ScrollToBottom from "react-scroll-to-bottom";

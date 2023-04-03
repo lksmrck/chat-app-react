@@ -1,8 +1,8 @@
 import React from "react";
 import { screen, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import SendMessageForm from "./SendMessageForm";
-import setupTest from "../../../utils/testUtils";
+import SendMessageForm from "../SendMessageForm";
+import setupTest from "../../../../utils/testUtils";
 
 describe("input testing", () => {
   beforeEach(() => setupTest(<SendMessageForm />));

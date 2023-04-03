@@ -1,10 +1,10 @@
-import { StyledConversationsBarNavbar, Container } from "./styled";
+import { StyledConversationsBarNavbar, Container } from "../styled";
 import { IconButton } from "@chakra-ui/react";
 import { FcExport, FcPlus } from "react-icons/fc";
-import useUserAuth from "../../hooks/useUserAuth";
+import useUserAuth from "../../../hooks/useUserAuth";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import AddConversationModal from "./conversations/AddConversationModal";
+import AddConversationModal from "../conversations/AddConversationModal";
 
 const ConversationsBarNavbar = () => {
   const [isAddConversationModalOpen, setIsAddConversationModalOpen] = useState(false);

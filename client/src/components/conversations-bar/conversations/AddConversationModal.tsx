@@ -82,6 +82,7 @@ const AddConversationModal: FC<AddConversationModalProps> = ({ isOpen, onClose }
                 focusBorderColor={theme.color.green}
                 value={searchTerm}
                 onChange={inputChangeHandler}
+                className="input"
               />
               <FormErrorMessage>{error.message}</FormErrorMessage>
             </FormControl>

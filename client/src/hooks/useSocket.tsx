@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import socket from "../socket";
+import socket from "../setups/socket";
 import useMessages from "../context/MessagesContext";
 import { MessageObject } from "../types/types";
 

@@ -1,5 +1,5 @@
-import Chat from "../components/chat/Chat";
-import ConversationsBar from "../components/sidebar/ConversationsBar";
+import Chat from "../components/chat-bar/ChatBar";
+import ConversationsBar from "../components/conversations-bar/ConversationsBar";
 import { ContentContainer, ContentWrapper } from "./styled";
 import { useMediaQuery } from "@chakra-ui/react";
 import { device } from "../common/device";

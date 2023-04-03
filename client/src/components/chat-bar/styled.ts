@@ -20,10 +20,9 @@ export const StyledChat = styled.div<ChatProps>`
     ${({ showChat }) =>
       showChat &&
       `
-  
-    width: 66.6%;
-    transition: width 1s;
-`}/* ${({ showChat }) => (showChat ? "width: 66.6%;" : "width: 0")}; */
+        width: 66.6%;
+        transition: width 1s;
+      `}
   }
 `;
 

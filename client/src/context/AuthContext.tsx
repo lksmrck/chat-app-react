@@ -2,7 +2,7 @@ import { getLocalStorage } from "../utils/getLocalStorage";
 import { UserTypeInLS } from "../types/types";
 import { createContext, ReactNode, useState, useEffect, FC, useContext } from "react";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth } from "../setups/firebase";
 
 interface AuthContextInterface {
   currentUser: any;

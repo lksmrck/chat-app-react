@@ -2,8 +2,8 @@
 
 import { Button } from "@chakra-ui/react";
 import { StyledConversationsBar } from "./styled";
-import Navbar from "./ConversationsBarNavbar";
-import Search from "./Search";
+import Navbar from "./conversations-navbar/ConversationsBarNavbar";
+import Search from "./search/Search";
 import ConversationList from "./conversations/ConversationList";
 import { FC, useState, ChangeEvent } from "react";
 
