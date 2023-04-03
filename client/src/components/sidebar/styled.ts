@@ -24,7 +24,7 @@ export const StyledConversationsBar = styled.div<ConversationsBarProps>`
     `
     border-top-right-radius: 0;
     width: 33.3%;
-    transition: width 1.5s;
+    transition: width 1s;
 `}
 `;
 

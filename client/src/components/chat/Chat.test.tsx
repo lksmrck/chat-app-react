@@ -11,9 +11,8 @@ describe("TBD", () => {
     setupTest(<Chat handleClickBackToConversations={handleClickBackToConversations} />)
   );
 
-  test("chat bar displays users name", () => {
-    const linkElement = screen.getByText(/Test User/i);
+  test("testing test", () => {
+    const linkElement = screen.getByText(/Sent mess/i);
     expect(linkElement).toBeInTheDocument();
   });
-  //TEST PŘESUNUT DO CHATNAVBAR.TEST.TSX
 });

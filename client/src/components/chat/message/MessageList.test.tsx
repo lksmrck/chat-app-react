@@ -13,7 +13,8 @@ describe("MessagesList renders correct elements", () => {
  */
 
   test("displays correct number of messages fetched from the server", async () => {
-    const messages = await screen.findAllByTestId("styled-message");
+    const messages = screen.getAllByTestId("styled-message");
     expect(messages).toHaveLength(5);
+    //FIXME: zaseknuto na loadingu
   });
 });

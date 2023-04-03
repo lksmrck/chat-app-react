@@ -27,16 +27,14 @@ export const findUsers = async (req, res) => {
   try {
     const { email } = req.params;
     const { searchingUserID } = req.body;
-    console.log(searchingUserID);
-
-    //Find user which email contains the req.params string (can be partial) EXCEPT the user, who sent the request (his ID included in the req.body)
+    //Find user which email contains the req.params string (can be partial)
     const foundUsers = await pool.query(
-      'SELECT * FROM "user" WHERE position($1 in LOWER(email))>0 EXCEPT SELECT * FROM "user" WHERE id = $2',
+      'SELECT * FROM "user" WHERE position($1 in LOWER(email))>0 EXCEPT SELECT * FROM "user" WHERE id = $2 ',
       [email, searchingUserID]
     );
-
+    //If such users found, returns an array of users. Otherwise returns 404
     if (foundUsers.rowCount > 0) {
-      //Modify key names for the response
+      //Modify key names
       const foundUsersAdjusted = foundUsers.rows.map((user) => {
         return {
           displayName: user.name,

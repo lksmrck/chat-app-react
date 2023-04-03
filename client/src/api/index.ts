@@ -27,19 +27,9 @@ export const createConversation = async (usersObject: any) => {
 //Přidání nové konverzace po kliknutí na + button v navbaru
 //DONE
 export const findUser = async (email: string, searchingUserID: string) => {
-  console.log(searchingUserID);
   const res = await API.post("/users/" + email, { searchingUserID });
   return res.data;
 };
-
-//TBD
-// export const getUser = async (userId: string) => {
-//   try {
-//     /*     const res =  */ await API.get("/users/" + userId);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
 
 //DONE
 export const createUser = async (user: UserObject) => {

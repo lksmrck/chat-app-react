@@ -12,16 +12,8 @@ export const StyledChat = styled.div<ChatProps>`
   display: block;
 
   @media ${device.md} {
-    width: 0%;
-    /*  display: none; */
-    //Animation
-    ${({ showChat }) =>
-      showChat &&
-      `
-    display: block;
     width: 66.6%;
-    transition: width 1s;
-`}/*    ${({ showChat }) => (showChat ? "display: block" : "display: none")}; */
+    ${({ showChat }) => (showChat ? "display: block" : "display: none")};
   }
 `;
 
@@ -33,15 +25,6 @@ export const StyledChatNavbar = styled.nav`
 
   border-top-right-radius: ${(props) => props.theme.borderRadius.small};
   border-top-left-radius: ${(props) => props.theme.borderRadius.small};
-
-  overflow: hidden; //TEST
-  white-space: nowrap; //TEST
-
-  /*   .navbar-data {
-    //TEST class
-      overflow: hidden;
-     white-space: nowrap;
-  } */
 
   @media ${device.md} {
     border-top-left-radius: 0;

@@ -7,7 +7,6 @@ import { ConversationContext } from "../context/ConversationContext";
 import { MessagesContext } from "../context/MessagesContext";
 import { mockUser, mockConversation, mockMessages } from "../mocks/data";
 import "@testing-library/jest-dom";
-import mediaQuery from "css-mediaquery";
 
 import { server } from "../mocks/server";
 
@@ -59,26 +58,6 @@ const setupTest = (component: ReactElement) => {
 
 export default setupTest;
 
-/* function createMatchMedia(width: number) {
-  return (query: any) => {
-    return {
-      matches: mediaQuery.match(query, { width }),
-      media: "",
-      addListener: () => {},
-      removeListener: () => {},
-      onchange: () => {},
-      addEventListener: () => {},
-      removeEventListener: () => {},
-      dispatchEvent: () => true,
-    };
-  };
-}
-
-export function resizeScreenSize(width: number) {
-  window.matchMedia = createMatchMedia(width);
-} */
-
-//Chakra UI issue
 beforeEach(() => {
   Object.defineProperty(window, "matchMedia", {
     writable: true,
