@@ -1,5 +1,5 @@
 import { StyledForm } from "./styled";
-import { Input } from "@chakra-ui/react";
+import { Button, Input } from "@chakra-ui/react";
 import { useState, ChangeEvent, FormEvent } from "react";
 import useAuth from "../../../context/AuthContext";
 import socket from "../../../socket";
@@ -50,6 +50,9 @@ const SendMessageForm = () => {
         style={{ width: "80%", marginLeft: "1em" }}
         borderRadius={18}
       />
+      <Button colorScheme="teal" type="submit">
+        Send
+      </Button>
     </StyledForm>
   );
 };

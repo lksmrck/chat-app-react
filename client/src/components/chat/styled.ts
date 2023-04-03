@@ -11,9 +11,19 @@ export const StyledChat = styled.div<ChatProps>`
   height: 100%;
   display: block;
 
+  overflow: hidden;
+  white-space: nowrap;
+
   @media ${device.md} {
+    width: 0;
+    //Animation
+    ${({ showChat }) =>
+      showChat &&
+      `
+  
     width: 66.6%;
-    ${({ showChat }) => (showChat ? "display: block" : "display: none")};
+    transition: width 1s;
+`}/* ${({ showChat }) => (showChat ? "width: 66.6%;" : "width: 0")}; */
   }
 `;
 

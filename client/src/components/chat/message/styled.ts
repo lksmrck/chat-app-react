@@ -19,8 +19,10 @@ export const MessageContainer = styled.div<MessageContainerProps>`
 `;
 
 export const StyledMessagesList = styled.div`
-  padding: ${(props) => props.theme.padding.small};
+  padding: 0 ${(props) => props.theme.padding.small};
   height: ${chatLayout.messagesListHeight};
+
+  white-space: nowrap;
 
   & * {
     //Hide scrollbar for all children

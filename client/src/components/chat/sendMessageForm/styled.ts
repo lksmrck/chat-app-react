@@ -6,4 +6,9 @@ export const StyledForm = styled.form`
   color: white;
   border-bottom-right-radius: ${(props) => props.theme.borderRadius.small};
   height: ${chatLayout.messageInputHeight};
+
+  button {
+    margin-left: ${(props) => props.theme.margin.medium};
+    margin-bottom: ${(props) => props.theme.margin.xxsmall};
+  }
 `;
