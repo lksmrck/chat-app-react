@@ -13,10 +13,11 @@ const useUserAuth = () => {
     setIsLoading(true);
     const provider = new GoogleAuthProvider();
     //Google doporučuje signInWithPopup na větších obrazovkách a signInWithRedirect na menších
-    await signInWithPopup(auth, provider).then((result) => {
+    await signInWithPopup(auth, provider).then(async (result) => {
       const { email, uid, displayName, photoURL } = result.user;
 
-      createUser({ email, uid, displayName, photoURL });
+      await createUser({ email, uid, displayName, photoURL });
+
       setIsLoading(false);
       navigate(routes.chat);
     });

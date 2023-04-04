@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
-import ConversationList from "./ConversationList";
+import ConversationList from "../ConversationList";
 
-import setupTest from "../../../utils/testUtils";
+import setupTest from "../../../../utils/testUtils";
 
 describe("Conversation list is fetched and rendered properly", () => {
   beforeEach(() => setupTest(<ConversationList conversationSearchTerm={""} />));

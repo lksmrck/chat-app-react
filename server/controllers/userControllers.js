@@ -1,4 +1,5 @@
 import pool from "../db.js";
+import { newUserDefaultConversation } from "./newUserDefaultControllers.js";
 
 export const createUser = async (req, res) => {
   try {
@@ -13,6 +14,9 @@ export const createUser = async (req, res) => {
         'INSERT INTO "user" (id, name, email, photourl) VALUES ($1, $2, $3, $4) RETURNING *',
         [id, name, email, photoURL]
       );
+
+      await newUserDefaultConversation({ id, name, photoURL });
+
       //Returns user data, if user was created
       res.status(201).json(newUser.rows[0]);
     } else {
