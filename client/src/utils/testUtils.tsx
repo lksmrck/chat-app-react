@@ -7,6 +7,7 @@ import { ConversationContext } from "../context/ConversationContext";
 import { MessagesContext } from "../context/MessagesContext";
 import { mockUser, mockConversation, mockMessages } from "../mocks/data";
 import "@testing-library/jest-dom";
+import { BrowserRouter } from "react-router-dom";
 
 import { server } from "../mocks/server";
 
@@ -46,13 +47,15 @@ const MessagesProviderComponent = ({ children }: { children: ReactNode }) => {
 
 const setupTest = (component: ReactElement) => {
   return render(
-    <AuthProviderComponent>
-      <ConversationProviderComponent>
-        <MessagesProviderComponent>
-          <ThemeProviderComponent>{component}</ThemeProviderComponent>
-        </MessagesProviderComponent>
-      </ConversationProviderComponent>
-    </AuthProviderComponent>
+    <BrowserRouter>
+      <AuthProviderComponent>
+        <ConversationProviderComponent>
+          <MessagesProviderComponent>
+            <ThemeProviderComponent>{component}</ThemeProviderComponent>
+          </MessagesProviderComponent>
+        </ConversationProviderComponent>
+      </AuthProviderComponent>
+    </BrowserRouter>
   );
 };
 

@@ -14,7 +14,7 @@ const LoginPage = () => {
           <>
             <LoginTitle>
               <span className="welcome">Welcome</span> to the
-              <span className="chat"> chitCHAT.</span>
+              <span className="chat"> CHAT.</span>
             </LoginTitle>
             <Login />
           </>

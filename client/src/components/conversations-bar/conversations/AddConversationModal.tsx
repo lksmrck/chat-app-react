@@ -83,6 +83,7 @@ const AddConversationModal: FC<AddConversationModalProps> = ({ isOpen, onClose }
                 value={searchTerm}
                 onChange={inputChangeHandler}
                 className="input"
+                data-testid="conv-search-input"
               />
               <FormErrorMessage>{error.message}</FormErrorMessage>
             </FormControl>

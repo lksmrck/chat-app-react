@@ -33,7 +33,7 @@ const ConversationsBarNavbar = () => {
         <Container>
           <IconButton
             size="sm"
-            aria-label="add conversation"
+            aria-label="add-conversation"
             icon={<FcPlus size={22} />}
             onClick={handleOpenModal}
           />

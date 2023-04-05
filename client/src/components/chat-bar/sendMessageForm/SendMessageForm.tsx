@@ -1,6 +1,6 @@
 import { StyledForm } from "./styled";
 import { Button, Input } from "@chakra-ui/react";
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState, ChangeEvent, FormEvent, FC } from "react";
 import useAuth from "../../../context/AuthContext";
 import socket from "../../../setups/socket";
 import useMessages from "../../../context/MessagesContext";
@@ -8,9 +8,9 @@ import useConversation from "../../../context/ConversationContext";
 import { theme } from "../../../common/theme";
 import { MessageObject } from "../../../types/types";
 import { IconButton } from "@chakra-ui/react";
-import { FcNext } from "react-icons/fc";
+import { AiOutlineSend } from "react-icons/ai";
 
-const SendMessageForm = () => {
+const SendMessageForm: FC = () => {
   const [message, setMessage] = useState("");
 
   const { currentUser } = useAuth();
@@ -23,7 +23,7 @@ const SendMessageForm = () => {
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
-
+    if (message.length < 1) return;
     const userIsMember1 = currentUser.uid === currentConversation.member1id;
 
     const messageObject = {
@@ -45,7 +45,6 @@ const SendMessageForm = () => {
         variant="outline"
         placeholder="Type something..."
         focusBorderColor={theme.color.green}
-        /*  borderTopRadius="0" */
         size="md"
         value={message}
         onChange={inputChangeHandler}
@@ -53,11 +52,11 @@ const SendMessageForm = () => {
         borderRadius={18}
       />
       <IconButton
-        colorScheme="yellow"
+        colorScheme="teal"
         type="submit"
-        size="sm"
+        size="md"
         aria-label="add conversation"
-        icon={<FcNext size={22} color="white" />}
+        icon={<AiOutlineSend size={22} color="#ffff" />}
       />
     </StyledForm>
   );

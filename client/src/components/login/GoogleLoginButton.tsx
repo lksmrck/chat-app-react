@@ -7,7 +7,7 @@ type GoogleLoginButtonProps = { onClick: any };
 const GoogleLoginButton: FC<GoogleLoginButtonProps> = ({ onClick }) => {
   return (
     <StyledGoogleLoginButton onClick={onClick}>
-      <img alt="google-logo" src={googleLogo} width="27px"></img>
+      <img alt="google-logo" src={googleLogo} width="27px" data-testid="test-google" />
       <h1>Sign in with Google</h1>
     </StyledGoogleLoginButton>
   );
