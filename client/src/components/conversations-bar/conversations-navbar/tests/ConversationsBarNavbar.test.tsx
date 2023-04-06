@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import ConversationsBarNavbar from "../ConversationsBarNavbar";
 import setupTest from "../../../../utils/testUtils";
 import userEvent from "@testing-library/user-event";
@@ -13,14 +13,9 @@ describe("buttons in navbar works properly", () => {
     expect(searchInput).toBeInTheDocument();
   });
 
-  //REPAIRME
-  //   test("logout button sends user to login screen", async () => {
-  //     const logoutButton = screen.getByLabelText("logout");
-  //     userEvent.click(logoutButton);
+  test("logout button is rendered properly", () => {
+    const logoutButton = screen.getByLabelText("logout");
 
-  //     /*   const googleLoginButton = await screen.findByAltText("google-logo"); */
-  //     /* const googleLoginButton = await screen.findByTestId("test-google"); */
-  //     const googleLoginButton = await screen.findByRole("img", { name: /google\-logo/i });
-  //     expect(googleLoginButton).toBeInTheDocument();
-  //   });
+    expect(logoutButton).toBeInTheDocument();
+  });
 });
