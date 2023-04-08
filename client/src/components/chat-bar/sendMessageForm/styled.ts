@@ -3,10 +3,13 @@ import { chatLayout, centerItems } from "../../../common/theme";
 
 export const StyledForm = styled.form`
   /*  background-color: #c4c4c4; */
+
   color: white;
+  //DAT PRYC
   border-bottom-right-radius: ${(props) => props.theme.borderRadius.small};
   height: ${chatLayout.messageInputHeight};
   ${centerItems.all};
+  border: 1px solid red;
   padding: 0 ${(props) => props.theme.padding.small};
 
   button {

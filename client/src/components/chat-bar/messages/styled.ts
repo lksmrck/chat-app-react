@@ -50,6 +50,8 @@ export const StyledMessagesList = styled.div`
 export const StyledMessage = styled.div<StyledMessageProps>`
   min-height: 2.25rem;
   max-width: 12rem;
+  white-space: normal;
+  overflow-wrap: break-word;
 
   margin: ${(props) => props.theme.margin.messageMargin};
   ${(props) => (props.sent ? "margin-right: 0.5em" : "margin-left: 0.5em")};

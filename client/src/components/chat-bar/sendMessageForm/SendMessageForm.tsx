@@ -1,5 +1,5 @@
 import { StyledForm } from "./styled";
-import { Button, Input } from "@chakra-ui/react";
+import { Button, Input, FormControl } from "@chakra-ui/react";
 import { useState, ChangeEvent, FormEvent, FC } from "react";
 import useAuth from "../../../context/AuthContext";
 import socket from "../../../setups/socket";
@@ -12,18 +12,24 @@ import { AiOutlineSend } from "react-icons/ai";
 
 const SendMessageForm: FC = () => {
   const [message, setMessage] = useState("");
+  const [formError, setFormError] = useState(false);
 
   const { currentUser } = useAuth();
   const { currentConversation } = useConversation();
   const { setMessages } = useMessages();
 
   const inputChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setFormError(false);
     setMessage(e.target.value);
   };
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
-    if (message.length < 1) return;
+    if (message.length < 1) {
+      setFormError(true);
+      return;
+    }
+
     const userIsMember1 = currentUser.uid === currentConversation.member1id;
 
     const messageObject = {
@@ -40,24 +46,26 @@ const SendMessageForm: FC = () => {
   };
 
   return (
-    <StyledForm onSubmit={submitHandler}>
-      <Input
-        variant="outline"
-        placeholder="Type something..."
-        focusBorderColor={theme.color.green}
-        size="md"
-        value={message}
-        onChange={inputChangeHandler}
-        style={{ width: "80%", marginLeft: "1em" }}
-        borderRadius={18}
-      />
-      <IconButton
-        colorScheme="teal"
-        type="submit"
-        size="md"
-        aria-label="add conversation"
-        icon={<AiOutlineSend size={22} color="#ffff" />}
-      />
+    <StyledForm onSubmit={submitHandler} data-testid="message-form">
+      <FormControl isInvalid={formError}>
+        <Input
+          variant="outline"
+          placeholder="Type something..."
+          focusBorderColor={theme.color.green}
+          size="md"
+          value={message}
+          onChange={inputChangeHandler}
+          style={{ width: "80%", marginLeft: "1em" }}
+          borderRadius={18}
+        />
+        <IconButton
+          colorScheme="teal"
+          type="submit"
+          size="md"
+          aria-label="send-message"
+          icon={<AiOutlineSend size={22} color="#ffff" />}
+        />
+      </FormControl>
     </StyledForm>
   );
 };

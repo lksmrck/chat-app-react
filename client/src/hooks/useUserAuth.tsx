@@ -2,7 +2,7 @@ import { useState } from "react";
 import { GoogleAuthProvider, signInWithPopup, signInWithRedirect, signOut } from "firebase/auth";
 import { auth } from "../setups/firebase";
 import { useNavigate } from "react-router-dom";
-import { routes } from "../constants";
+import { LINKS } from "../constants";
 import { createUser } from "../api";
 
 const useUserAuth = () => {
@@ -19,11 +19,11 @@ const useUserAuth = () => {
       await createUser({ email, uid, displayName, photoURL });
 
       setIsLoading(false);
-      navigate(routes.chat);
+      navigate(LINKS.chat);
     });
   };
 
-  const googleSignOut = async () => signOut(auth).then(() => navigate(routes.login));
+  const googleSignOut = async () => signOut(auth).then(() => navigate(LINKS.login));
 
   return { googleSignIn, googleSignOut, isLoading };
 };

@@ -1,5 +1,4 @@
-export const routes = {
-    login: "/login", 
-    chat: "/conversations",
-  
-}
+export const LINKS = {
+  login: "/login",
+  chat: "/conversations",
+};
