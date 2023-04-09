@@ -6,13 +6,13 @@ type ChatProps = {
   showChat?: boolean;
 };
 
-export const StyledChat = styled.div<ChatProps>`
+export const StyledChatBar = styled.div<ChatProps>`
   width: 100%;
   height: 100%;
   display: block;
 
-  overflow: hidden;
   white-space: nowrap;
+  overflow: hidden;
 
   @media ${device.md} {
     width: 0;

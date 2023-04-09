@@ -16,12 +16,17 @@ export const MessageContainer = styled.div<MessageContainerProps>`
   display: flex;
   flex-direction: ${(props) => (props.sent ? "row-reverse" : "row")};
   align-items: center;
+  min-width: 300px;
+  margin: 0 ${(props) => props.theme.margin.small};
 `;
 
 export const StyledMessagesList = styled.div`
-  padding: 0 ${(props) => props.theme.padding.small};
+  width: 100%;
+  /*  padding: 0 ${(props) => props.theme.padding.small}; */
   height: ${chatLayout.messagesListHeight};
 
+  margin-bottom: ${(props) => props.theme.margin.xsmall};
+  overflow: hidden;
   white-space: nowrap;
 
   & * {
@@ -49,6 +54,7 @@ export const StyledMessagesList = styled.div`
 
 export const StyledMessage = styled.div<StyledMessageProps>`
   min-height: 2.25rem;
+  min-width: min-content;
   max-width: 12rem;
   white-space: normal;
   overflow-wrap: break-word;

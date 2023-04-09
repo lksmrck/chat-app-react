@@ -6,10 +6,10 @@ export const StyledForm = styled.form`
 
   color: white;
   //DAT PRYC
-  border-bottom-right-radius: ${(props) => props.theme.borderRadius.small};
+  /* border-bottom-right-radius: ${(props) => props.theme.borderRadius.small}; */
   height: ${chatLayout.messageInputHeight};
   ${centerItems.all};
-  border: 1px solid red;
+
   padding: 0 ${(props) => props.theme.padding.small};
 
   button {
