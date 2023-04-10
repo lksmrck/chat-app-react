@@ -47,7 +47,7 @@ const SendMessageForm: FC = () => {
 
   return (
     <StyledForm onSubmit={submitHandler} data-testid="message-form">
-      <FormControl isInvalid={formError}>
+      <FormControl isInvalid={formError} className="container">
         <Input
           variant="outline"
           placeholder="Type something..."

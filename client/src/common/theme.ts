@@ -70,6 +70,8 @@ export const theme: DefaultTheme = {
     small: "1em",
     medium: "1.5em",
     large: "2em",
+    xlarge: "40px",
+    xxlarge: "48px",
   },
   borderRadius: {
     small: "8px",
