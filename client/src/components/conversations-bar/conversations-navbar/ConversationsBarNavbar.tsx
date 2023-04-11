@@ -1,13 +1,20 @@
-import { StyledConversationsBarNavbar, Container } from "../styled";
+import {
+  StyledConversationsBarNavbar,
+  ContentContainer,
+  ButtonsContainer,
+  NavbarContent,
+} from "./styled";
 import { IconButton } from "@chakra-ui/react";
 import { FcExport, FcPlus } from "react-icons/fc";
 import useUserAuth from "../../../hooks/useUserAuth";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import AddConversationModal from "../conversations/AddConversationModal";
+import useAuth from "../../../context/AuthContext";
+import { stringGuard } from "../../../utils/utils";
 
 const ConversationsBarNavbar = () => {
   const [isAddConversationModalOpen, setIsAddConversationModalOpen] = useState(false);
+  const { currentUser } = useAuth();
 
   const { googleSignOut } = useUserAuth();
 
@@ -29,8 +36,14 @@ const ConversationsBarNavbar = () => {
   return (
     <>
       <StyledConversationsBarNavbar>
-        <h1>chitCHAT</h1>
-        <Container>
+        <NavbarContent>
+          <h6>You're logged as</h6>
+          <ContentContainer>
+            <img src={currentUser.photoURL} width="22px" style={{ borderRadius: "50%" }} />
+            <h1>{stringGuard(currentUser.displayName, 15)}</h1>
+          </ContentContainer>
+        </NavbarContent>
+        <ButtonsContainer>
           <IconButton
             size="sm"
             aria-label="add-conversation"
@@ -43,7 +56,7 @@ const ConversationsBarNavbar = () => {
             icon={<FcExport size={22} />}
             onClick={handleSignOut}
           />
-        </Container>
+        </ButtonsContainer>
       </StyledConversationsBarNavbar>
       <AddConversationModal isOpen={isAddConversationModalOpen} onClose={handleCloseModal} />
     </>

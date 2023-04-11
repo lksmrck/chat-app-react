@@ -49,6 +49,7 @@ export const theme: DefaultTheme = {
       "-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75); -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75); box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);",
   },
   fontSize: {
+    xxs: "0.65rem" /* 10.4px */,
     xs: "0.75rem" /* 12px */,
     s: "0.875rem" /* 14px */,
     m: "1rem" /* 16px */,
@@ -70,8 +71,6 @@ export const theme: DefaultTheme = {
     small: "1em",
     medium: "1.5em",
     large: "2em",
-    xlarge: "40px",
-    xxlarge: "48px",
   },
   borderRadius: {
     small: "8px",

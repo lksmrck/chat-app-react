@@ -4,3 +4,11 @@ export const getTime = (date: Date | string) => {
     minute: "2-digit",
   });
 };
+
+//Shortering the string name. If the string is longer than letters parameter, it will be shortened and "..." wil be included.
+
+export const stringGuard = (name: string, letters: number) => {
+  if (name.length < letters) return name;
+  const shortName = `${name.slice(0, letters - 1)}...`;
+  return shortName;
+};
