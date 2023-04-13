@@ -32,7 +32,7 @@ server.listen(PORT, () => {
 });
 
 io.on("connection", (socket) => {
-  console.log("User connected: " + socket.id); //when someone connects -> přiřadí random ID
+  console.log("User connected: " + socket.request); //when someone connects -> přiřadí random ID
 
   socket.on("join_chat", (data) => {
     //data bude room id

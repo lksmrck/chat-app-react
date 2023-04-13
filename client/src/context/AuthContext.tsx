@@ -1,12 +1,20 @@
-import { getLocalStorage } from "../utils/getLocalStorage";
-import { UserTypeInLS } from "../types/types";
-import { createContext, ReactNode, useState, useEffect, FC, useContext } from "react";
-import { getAuth, onAuthStateChanged, User } from "firebase/auth";
+import {
+  createContext,
+  ReactNode,
+  useState,
+  useEffect,
+  FC,
+  useContext,
+  Dispatch,
+  SetStateAction,
+} from "react";
+import { onAuthStateChanged, User } from "firebase/auth";
 import { auth } from "../setups/firebase";
 
 interface AuthContextInterface {
-  currentUser: any;
-  setCurrentUser: any;
+  currentUser: /* User | null; */ any;
+  setCurrentUser: /* Dispatch<SetStateAction<User | null>>; */ any;
+  isLoading: boolean;
 }
 
 export const AuthContext = createContext({} as AuthContextInterface);
@@ -15,16 +23,18 @@ export const AuthContextProvider: FC<{
   children: ReactNode;
 }> = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(() => auth.currentUser);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
-      console.log(user);
+      setIsLoading(false);
     });
 
     return () => {
       //Unsubscribe
       unsub();
+      setIsLoading(false);
     };
   }, []);
 
@@ -33,6 +43,7 @@ export const AuthContextProvider: FC<{
       value={{
         currentUser,
         setCurrentUser,
+        isLoading,
       }}
     >
       {children}

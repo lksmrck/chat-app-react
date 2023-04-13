@@ -21,7 +21,7 @@ const AuthProviderComponent = ({ children }: { children: ReactNode }) => {
   const currentUser = mockUser;
 
   return (
-    <AuthContext.Provider value={{ currentUser, setCurrentUser: mockFn }}>
+    <AuthContext.Provider value={{ currentUser, setCurrentUser: mockFn, isLoading: true }}>
       {children}
     </AuthContext.Provider>
   );
