@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { chatLayout } from "../../common/theme";
-import { device } from "../../common/device";
+import { device_min } from "../../common/device";
 
 type ChatProps = {
   showChat?: boolean;
@@ -14,7 +14,7 @@ export const StyledChatBar = styled.div<ChatProps>`
   white-space: nowrap;
   overflow: hidden;
 
-  @media ${device.md} {
+  @media ${device_min.md} {
     width: 0;
     //Animation
     ${({ showChat }) =>
@@ -35,7 +35,7 @@ export const StyledChatNavbar = styled.nav`
   border-top-right-radius: ${(props) => props.theme.borderRadius.small};
   border-top-left-radius: ${(props) => props.theme.borderRadius.small};
 
-  @media ${device.md} {
+  @media ${device_min.md} {
     border-top-left-radius: 0;
   }
 `;

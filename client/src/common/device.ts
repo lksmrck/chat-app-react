@@ -5,9 +5,16 @@ const size = {
   xl: "1536px",
 };
 
-export const device = {
+export const device_min = {
   sm: `(min-width: ${size.sm})`,
   md: `(min-width: ${size.md})`,
   lg: `(min-width: ${size.lg})`,
   xl: `(min-width: ${size.xl})`,
+};
+
+export const device_max = {
+  sm: `(max-width: ${size.sm})`,
+  md: `(max-width: ${size.md})`,
+  lg: `(max-width: ${size.lg})`,
+  xl: `(max-width: ${size.xl})`,
 };

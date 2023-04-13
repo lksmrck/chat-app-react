@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { chatLayout, centerItems } from "../../../common/theme";
-import { device } from "../../../common/device";
+import { device_min } from "../../../common/device";
 
 export const StyledForm = styled.form`
   /*  background-color: #c4c4c4; */
@@ -16,7 +16,7 @@ export const StyledForm = styled.form`
     ${centerItems.all};
     justify-content: space-between;
 
-    @media ${device.md} {
+    @media ${device_min.md} {
       justify-content: initial;
       gap: 6.3%;
     }

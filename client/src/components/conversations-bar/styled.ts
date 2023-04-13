@@ -1,6 +1,5 @@
-import { theme } from "@chakra-ui/react";
+import { device_min } from "../../common/device";
 import styled from "styled-components";
-import { chatLayout } from "../../common/theme";
 
 type ConversationsBarProps = {
   widthAnimation?: boolean;
@@ -15,8 +14,13 @@ export const StyledConversationsBar = styled.div<ConversationsBarProps>`
   border-top-left-radius: ${(props) => props.theme.borderRadius.small};
   border-top-right-radius: ${(props) => props.theme.borderRadius.small};
   border-bottom-left-radius: ${(props) => props.theme.borderRadius.small};
+  border-bottom-right-radius: ${(props) => props.theme.borderRadius.small};
   border-right: 1px solid #0c0c0c;
   overflow: hidden;
+
+  @media ${device_min.md} {
+    border-bottom-right-radius: 0;
+  }
 
   //Animation
   ${({ widthAnimation }) =>

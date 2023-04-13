@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { centerItems } from "../common/theme";
-import { device } from "../common/device";
+import { device_min } from "../common/device";
 
 type ContentWrapperProps = {
   flex?: string;
@@ -16,8 +16,8 @@ export const ContentContainer = styled.div`
   ${(props) => props.theme.shadow.medium};
   ${centerItems.all};
 
-  @media ${device.md} {
-    width: 60vw;
+  @media ${device_min.md} {
+    width: 70vw;
   }
 `;
 
@@ -31,7 +31,7 @@ export const ContentWrapper = styled.div<ContentWrapperProps>`
   border-radius: ${(props) => props.theme.borderRadius.small};
   border: 1px solid ${(props) => props.theme.color.green};
 
-  @media ${device.lg} {
+  @media ${device_min.lg} {
     //TBD
   }
 `;
@@ -48,7 +48,7 @@ export const LoginTitle = styled.h1`
   border-radius: 40px;
   background-color: ${(props) => props.theme.color.blackTwo};
 
-  @media ${device.lg} {
+  @media ${device_min.lg} {
     max-width: 580px;
   }
 
