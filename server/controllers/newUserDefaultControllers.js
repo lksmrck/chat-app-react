@@ -22,13 +22,15 @@ export const newUserDefaultConversation = async (createdUserObject) => {
   const defaultMessages = [
     "Hello stranger!",
     "Thank you for testing this app. I am your default friend, so you can try this app a bit :)",
+    'For start, you can add a conversation by clicking "+" button in navigation bar and start typing user email',
+    'Since there is not many users, try to start typing "Lukas" :)',
   ];
   const date = new Date();
 
-  defaultMessages.forEach(async (message) => {
+  for (const message of defaultMessages) {
     await pool.query(
-      "INSERT INTO message (conversation_id, sender_id, receiver_id, text, time) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+      "INSERT INTO message (conversation_id, sender_id, receiver_id, text, time) VALUES ($1, $2, $3, $4, $5)",
       [generatedID, defaultID, id, message, date]
     );
-  });
+  }
 };

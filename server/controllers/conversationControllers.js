@@ -3,7 +3,7 @@ import { generateID } from "../utils/utils.js";
 
 export const getConversations = async (req, res) => {
   const { userID } = req.params;
-  /* console.log(userID); */
+
   try {
     //Find all conversations where requesting user is part of the members array
     const existingConversations = await pool.query(

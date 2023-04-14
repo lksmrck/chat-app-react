@@ -1,7 +1,6 @@
 import pool from "../db.js";
 
 export const getMessages = async (req, res) => {
-  /*   const conversationId = req.query.conversationId;  */ //identifikátor konverzace
   const { conversationID } = req.params;
 
   try {
