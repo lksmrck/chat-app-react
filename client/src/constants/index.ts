@@ -1,4 +1,4 @@
 export const LINKS = {
   login: "/login",
-  chat: "/conversations",
+  chat: "/messages",
 };

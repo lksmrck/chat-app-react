@@ -6,7 +6,7 @@ import { Layout } from "./components/ui/styled";
 import { Routes as RouterRoutes, Route, Navigate } from "react-router-dom";
 import ProtectedRoutes from "./components/login/ProtectedRoutes";
 
-function App() {
+const App = () => {
   return (
     <div>
       <Layout>
@@ -15,12 +15,14 @@ function App() {
           {/*     <Route path="*" element={<NotFound />} /> */}
           <Route path="/login" element={<LoginPage />} />
           <Route element={<ProtectedRoutes />}>
-            <Route path="/conversations" element={<MainPage />} />
+            {/* TODO: sjednotit */}
+            <Route path={"/messages"} element={<MainPage />} />
+            <Route path={"/messages/:conversationID"} element={<MainPage />} />
           </Route>
         </RouterRoutes>
       </Layout>
     </div>
   );
-}
+};
 
 export default App;

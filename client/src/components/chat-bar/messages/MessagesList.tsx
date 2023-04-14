@@ -12,6 +12,7 @@ import { MessageObject } from "../../../types/types";
 import Spinner from "../../ui/Spinner";
 import { MessagesListErrorMessage } from "./styled";
 import SocketErrorModal from "./SocketErrorModal";
+import { useParams } from "react-router-dom";
 
 const MessagesList = () => {
   const { messages, setMessages } = useMessages();
@@ -19,6 +20,8 @@ const MessagesList = () => {
   const { currentConversation } = useConversation();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({ isError: false, message: "" });
+
+  let { conversationID } = useParams();
 
   //Initialization connection
   const { isError, setIsError } = useSocket();

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { ConversationObject } from "../../../types/types";
 import useAuth from "../../../context/AuthContext";
-
+import { useNavigate } from "react-router-dom";
 import { StyledConversation, StyledFriendName, Container } from "./styled";
 import useConversation from "../../../context/ConversationContext";
 
@@ -12,11 +12,13 @@ type ConversationProps = {
 const Conversation: FC<ConversationProps> = ({ conversation }) => {
   const { currentUser } = useAuth();
   const { setCurrentConversation } = useConversation();
+  const navigate = useNavigate();
 
   const friendMemberNumber = currentUser.uid === conversation.member1id ? "member2" : "member1";
 
   const conversationClickHandler = () => {
     setCurrentConversation(conversation);
+    navigate(`/messages/${conversation.id}`);
   };
 
   return (
