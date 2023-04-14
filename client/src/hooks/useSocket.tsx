@@ -1,16 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import socket from "../setups/socket";
 import useMessages from "../context/MessagesContext";
 import { MessageObject } from "../types/types";
 
 const useSocket = () => {
   const { setMessages } = useMessages();
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     socket.connect();
     socket.on("connect_error", () => {
       //TODO: error handle socket connection
-      console.log("nah");
+      setIsError(true);
     });
 
     socket.on("receive_message", (message) => {
@@ -21,6 +22,8 @@ const useSocket = () => {
       socket.off("receive_message");
     };
   }, [setMessages]);
+
+  return { isError, setIsError };
 };
 
 export default useSocket;

@@ -11,6 +11,7 @@ import ScrollToBottom from "react-scroll-to-bottom";
 import { MessageObject } from "../../../types/types";
 import Spinner from "../../ui/Spinner";
 import { MessagesListErrorMessage } from "./styled";
+import SocketErrorModal from "./SocketErrorModal";
 
 const MessagesList = () => {
   const { messages, setMessages } = useMessages();
@@ -20,7 +21,7 @@ const MessagesList = () => {
   const [error, setError] = useState({ isError: false, message: "" });
 
   //Initialization connection
-  useSocket();
+  const { isError, setIsError } = useSocket();
 
   useEffect(() => {
     setLoading(true);
@@ -88,6 +89,7 @@ const MessagesList = () => {
             })}
         </ScrollToBottom>
       )}
+      <SocketErrorModal isOpen={isError} onClose={() => setIsError(false)} />
     </StyledMessagesList>
   );
 };

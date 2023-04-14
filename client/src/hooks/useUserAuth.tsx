@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { GoogleAuthProvider, signInWithPopup, signInWithRedirect, signOut } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithRedirect,
+  signOut,
+  setPersistence,
+  browserSessionPersistence,
+} from "firebase/auth";
 import { auth } from "../setups/firebase";
 import { useNavigate } from "react-router-dom";
 import { LINKS } from "../constants";
@@ -13,7 +20,7 @@ const useUserAuth = () => {
     setIsLoading(true);
     const provider = new GoogleAuthProvider();
     //Google doporučuje signInWithPopup na větších obrazovkách a signInWithRedirect na menších
-
+    setPersistence(auth, browserSessionPersistence);
     await signInWithPopup(auth, provider).then(async (result) => {
       const { email, uid, displayName, photoURL } = result.user;
 
