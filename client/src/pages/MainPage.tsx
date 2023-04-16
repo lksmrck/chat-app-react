@@ -5,6 +5,8 @@ import { useMediaQuery } from "@chakra-ui/react";
 import { device_min } from "../common/device";
 import { useState, useEffect } from "react";
 import useConversation from "../context/ConversationContext";
+import useSocket from "../hooks/useSocket";
+import SocketErrorModal from "../components/chat-bar/messages/SocketErrorModal";
 
 const MainPage = () => {
   const [minMediumScreen] = useMediaQuery(device_min.md);
@@ -17,6 +19,8 @@ const MainPage = () => {
     if (currentConversation.id && minMediumScreen) setShowChat(true);
     if (currentConversation.id && !minMediumScreen) setSmDeviceScreen("CHAT");
   }, [currentConversation]);
+
+  const { isError, setIsError } = useSocket();
 
   const handleClickBackToConversations = (screen: string) => setSmDeviceScreen(screen);
 
@@ -37,6 +41,7 @@ const MainPage = () => {
           <Chat handleClickBackToConversations={handleClickBackToConversations} />
         )}
       </ContentWrapper>
+      <SocketErrorModal isOpen={isError} onClose={() => setIsError(false)} />
     </ContentContainer>
   );
 };

@@ -21,6 +21,33 @@ export const mockConversation = {
     "https://lh3.googleusercontent.com/a/AGNmyxacbPRsDKosQcyJZ1FUZEIt7uJhnLNHaB4-4I6P=s96-c",
 };
 
+export const mockAllConversations = [
+  {
+    id: "vee73o258d",
+    members: ["opoqwe909790qijqjpjrpq", "7weiqw96qwkqpkew78qwopq"],
+    member1id: "opoqwe909790qijqjpjrpq",
+    member1name: "Karel Novak",
+    member1photourl:
+      "https://lh3.googleusercontent.com/a/AGNmyxY4AAUXnEe1k_sqBYfQlKQ-wg-Yz28L4R43tJMw=s96-c",
+    member2id: "7weiqw96qwkqpkew78qwopq",
+    member2name: "Test User",
+    member2photourl:
+      "https://lh3.googleusercontent.com/a/AGNmyxacbPRsDKosQcyJZ1FUZEIt7uJhnLNHaB4-4I6P=s96-c",
+  },
+  {
+    id: "vee73o258d",
+    members: ["opoqwe909790qijqjpjrpq", "7weiqw96qwkqpkew78qwopq"],
+    member1id: "opoqwe909790qijqjpjrpq",
+    member1name: "Karel Novak",
+    member1photourl:
+      "https://lh3.googleusercontent.com/a/AGNmyxY4AAUXnEe1k_sqBYfQlKQ-wg-Yz28L4R43tJMw=s96-c",
+    member2id: "7weiqw96qwkqpkew78qwopq",
+    member2name: "Test User",
+    member2photourl:
+      "https://lh3.googleusercontent.com/a/AGNmyxacbPRsDKosQcyJZ1FUZEIt7uJhnLNHaB4-4I6P=s96-c",
+  },
+];
+
 export const mockMessages = [
   {
     /*     id: 64, */

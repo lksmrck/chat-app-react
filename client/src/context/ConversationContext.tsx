@@ -12,6 +12,8 @@ import { ConversationObject } from "../types/types";
 interface ConversationContextInterface {
   currentConversation: ConversationObject;
   setCurrentConversation: Dispatch<SetStateAction<ConversationObject>>;
+  allConversations: ConversationObject[];
+  setAllConversations: Dispatch<SetStateAction<ConversationObject[]>>;
 }
 
 export const ConversationContext = createContext({} as ConversationContextInterface);
@@ -22,12 +24,17 @@ export const ConversationContextProvider: FC<{
   const [currentConversation, setCurrentConversation] = useState<ConversationObject>(
     {} as ConversationObject
   );
+  const [allConversations, setAllConversations] = useState<ConversationObject[]>(
+    [] as ConversationObject[]
+  );
 
   return (
     <ConversationContext.Provider
       value={{
         currentConversation,
         setCurrentConversation,
+        allConversations,
+        setAllConversations,
       }}
     >
       {children}

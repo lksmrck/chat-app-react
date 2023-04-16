@@ -2,6 +2,7 @@ import Conversation from "./Conversation";
 import { StyledConversationList, ConversationsErrorMessage } from "./styled";
 import { useEffect, useState, FC } from "react";
 import useAuth from "../../../context/AuthContext";
+import useConversation from "../../../context/ConversationContext";
 import { getConversations } from "../../../api";
 import { ConversationObject } from "../../../types/types";
 import Spinner from "../../ui/Spinner";
@@ -13,10 +14,12 @@ type ConversationList = {
 const ConversationList: FC<ConversationList> = ({ conversationSearchTerm }) => {
   const [loading, setLoading] = useState(true);
   const { currentUser } = useAuth();
-  const [allConversations, setAllConversations] = useState<ConversationObject[] | []>([]);
+  /*   const [allConversations, setAllConversations] = useState<ConversationObject[] | []>([]); */
   const [filteredConversations, setFilteredConversations] = useState<ConversationObject[] | []>([]);
   /*      () => conversations */
   const [error, setError] = useState({ isError: false, message: "" });
+
+  const { allConversations, setAllConversations } = useConversation();
 
   useEffect(() => {
     let sub = true;

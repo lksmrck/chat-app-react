@@ -5,6 +5,7 @@ import { Server } from "socket.io";
 import dotenv from "dotenv";
 import routes from "./routes/api.js";
 import messageHandler from "./controllers/socketio/messageHandler.js";
+import { wrap, socketMiddleware } from "./socketConnectionMiddleware.js";
 
 const app = express();
 
@@ -27,20 +28,21 @@ const io = new Server(server, {
   },
 });
 
+//Socket.io middleware - retreive user ID during connection
+io.use(wrap(socketMiddleware));
+
 server.listen(PORT, () => {
   console.log("Listening yo on port: " + PORT);
 });
 
 io.on("connection", (socket) => {
-  console.log("User connected: " + socket.request); //when someone connects -> přiřadí random ID
+  console.log("User connected: " + socket.id); //when someone connects -> přiřadí random ID
 
   socket.on("join_chat", (data) => {
-    //data bude room id
     socket.join(data); //based on the room the entered in FE
   });
 
-  //DONE
-  //Send a received message
+  //Send a receive message
   socket.on("send_message", (message) => messageHandler(socket, message));
 
   socket.on("disconnect", () => {

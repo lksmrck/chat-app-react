@@ -5,7 +5,7 @@ import { theme } from "../common/theme";
 import { AuthContext } from "../context/AuthContext";
 import { ConversationContext } from "../context/ConversationContext";
 import { MessagesContext } from "../context/MessagesContext";
-import { mockUser, mockConversation, mockMessages } from "../mocks/data";
+import { mockUser, mockConversation, mockMessages, mockAllConversations } from "../mocks/data";
 import "@testing-library/jest-dom";
 import { BrowserRouter } from "react-router-dom";
 
@@ -29,8 +29,17 @@ const AuthProviderComponent = ({ children }: { children: ReactNode }) => {
 
 const ConversationProviderComponent = ({ children }: { children: ReactNode }) => {
   const currentConversation = mockConversation;
+  const allConversations = mockAllConversations;
+
   return (
-    <ConversationContext.Provider value={{ currentConversation, setCurrentConversation: mockFn }}>
+    <ConversationContext.Provider
+      value={{
+        currentConversation,
+        setCurrentConversation: mockFn,
+        allConversations,
+        setAllConversations: mockFn,
+      }}
+    >
       {children}
     </ConversationContext.Provider>
   );
