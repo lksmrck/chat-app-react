@@ -14,10 +14,9 @@ const ChatBar: FC<ChatProps> = ({ handleClickBackToConversations, showChat }) =>
   return (
     <StyledChatBar showChat={showChat}>
       <ChatNavbar handleClickBackToConversations={handleClickBackToConversations} />
-      <MessagesContextProvider>
-        <MessagesList />
-        <SendMessageForm />
-      </MessagesContextProvider>
+
+      <MessagesList />
+      <SendMessageForm />
     </StyledChatBar>
   );
 };

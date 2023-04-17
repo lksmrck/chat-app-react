@@ -7,17 +7,20 @@ import { AuthContextProvider } from "./context/AuthContext";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./common/theme";
 import { ConversationContextProvider } from "./context/ConversationContext";
+import { MessagesContextProvider } from "./context/MessagesContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
   <ChakraProvider>
     <BrowserRouter>
       <AuthContextProvider>
-        <ConversationContextProvider>
-          <ThemeProvider theme={theme}>
-            <App />
-          </ThemeProvider>
-        </ConversationContextProvider>
+        <MessagesContextProvider>
+          <ConversationContextProvider>
+            <ThemeProvider theme={theme}>
+              <App />
+            </ThemeProvider>
+          </ConversationContextProvider>
+        </MessagesContextProvider>
       </AuthContextProvider>
     </BrowserRouter>
   </ChakraProvider>

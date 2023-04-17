@@ -8,10 +8,11 @@ import {
 } from "./styled";
 import { UserObject } from "../../../types/types";
 import useAuth from "../../../context/AuthContext";
-import { createConversation } from "../../../api/index";
+import { createConversation, getConversations } from "../../../api/index";
 import Spinner from "../../ui/Spinner";
 import useConversation from "../../../context/ConversationContext";
 import socket from "../../../setups/socket";
+import { generateID } from "../../../utils/utils";
 
 type FoundUsersResultProps = {
   foundUsers: UserObject[] | [];
@@ -37,7 +38,9 @@ const FoundUsersList: FC<FoundUsersResultProps> = ({ foundUsers, loading, onModa
     /*  const clickedConversation = await createConversation(usersData); */
 
     socket.emit("add_conversation", usersData);
-    setAllConversations((prevConversations: any) => [...prevConversations, usersData]);
+    const data = await getConversations(currentUser.uid);
+    setAllConversations(data);
+    /*    setAllConversations((prevConversations: any) => [...prevConversations, usersData]); */
     onModalClose();
   };
 

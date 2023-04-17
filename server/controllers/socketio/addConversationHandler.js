@@ -20,10 +20,8 @@ export const addConversationHandler = async (socket, conversation) => {
   const sockets = await io.fetchSockets();
 
   //Find receivers socket.id by his userID on the front end
-  const receivers = sockets.filter(
-    (socket) => socket.userID === foundUserId || socket.userID === searchingUserId
-  );
-  console.log(receivers);
+  const receiver = sockets.filter((socket) => socket.userID === foundUserId);
+
   try {
     //Check if conversation already exists
     const existingConversation = await pool.query(
@@ -47,14 +45,14 @@ export const addConversationHandler = async (socket, conversation) => {
       );
 
       socket
-        .to(receivers[0].id)
-        .to(receivers[1].id)
+        .to(receiver[0].id)
+        /*    .to(receivers[1].id) */
         .emit("added__me_to_conversations", newConversation.rows[0]);
-    } else
+    } /* else
       socket
-        .to(receivers[0].id)
-        .to(receivers[1].id)
-        .emit("added__me_to_conversations", existingConversation.rows[0]);
+        .to(receiver[0].id)
+                .to(receivers[1].id)
+        .emit("added__me_to_conversations", existingConversation.rows[0]); */
   } catch (error) {
     //TODO: Error handle
     res.status(404).json({ message: error.message });

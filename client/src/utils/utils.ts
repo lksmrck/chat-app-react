@@ -12,3 +12,9 @@ export const stringGuard = (name: string, letters: number) => {
   const shortName = `${name.slice(0, letters - 1)}...`;
   return shortName;
 };
+
+export const generateID = () => {
+  return Math.random()
+    .toString(36)
+    .substring(2, 10 + 2);
+};

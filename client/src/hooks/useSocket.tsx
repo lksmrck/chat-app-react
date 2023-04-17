@@ -21,24 +21,21 @@ const useSocket = () => {
       setIsError(true);
     });
 
-    socket.on("receive_message", (message) => {
-      setMessages((prevMessages: MessageObject[]) => [...prevMessages, message]);
+    socket.on("receive_message", async (message) => {
+      console.log(message);
+      /* await message; */
+      setMessages((prevMessages) => [...prevMessages, message]);
     });
 
-    //TODO:
-    socket.on("added__me_to_conversations", (conversation) => {
-      console.log("client - addedmetoconv jede");
-      setAllConversations((prevConversations: ConversationObject[]) => [
-        ...prevConversations,
-        conversation,
-      ]);
+    socket.on("added__me_to_conversations", async (conversation) => {
+      setAllConversations((prevConversations) => [...prevConversations, conversation]);
     });
 
     return () => {
       socket.off("connect_error");
       socket.off("receive_message");
     };
-  }, [setMessages]);
+  }, [setMessages, setAllConversations]);
 
   return { isError, setIsError };
 };

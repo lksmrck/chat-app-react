@@ -24,7 +24,7 @@ const MessagesList = () => {
   let { conversationID } = useParams();
 
   //Initialization connection
-  /*   const { isError, setIsError } = useSocket(); */
+  /*    const { isError, setIsError } = */ /* useSocket(); */
 
   useEffect(() => {
     setLoading(true);
@@ -92,7 +92,6 @@ const MessagesList = () => {
             })}
         </ScrollToBottom>
       )}
-      {/* <SocketErrorModal isOpen={isError} onClose={() => setIsError(false)} /> */}
     </StyledMessagesList>
   );
 };
