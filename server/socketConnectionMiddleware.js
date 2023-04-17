@@ -1,6 +1,6 @@
 export const socketMiddleware = (socket, next) => {
-  socket.user = 123;
+  const userID = socket.handshake.auth.userID;
+  socket.userID = userID;
+  console.log(userID);
   next();
 };
-
-export const wrap = (middleware) => (socket, next) => middleware(socket.request, {}, next);

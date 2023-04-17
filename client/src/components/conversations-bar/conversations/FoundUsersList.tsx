@@ -11,6 +11,7 @@ import useAuth from "../../../context/AuthContext";
 import { createConversation } from "../../../api/index";
 import Spinner from "../../ui/Spinner";
 import useConversation from "../../../context/ConversationContext";
+import socket from "../../../setups/socket";
 
 type FoundUsersResultProps = {
   foundUsers: UserObject[] | [];
@@ -20,7 +21,7 @@ type FoundUsersResultProps = {
 
 const FoundUsersList: FC<FoundUsersResultProps> = ({ foundUsers, loading, onModalClose }) => {
   const { currentUser } = useAuth();
-  const { currentConversation, setCurrentConversation } = useConversation();
+  const { currentConversation, setCurrentConversation, setAllConversations } = useConversation();
 
   const foundUserClickHandler = async (foundUser: UserObject) => {
     const usersData = {
@@ -33,8 +34,10 @@ const FoundUsersList: FC<FoundUsersResultProps> = ({ foundUsers, loading, onModa
     };
 
     /* createConversation(usersIdData); */
-    const clickedConversation = await createConversation(usersData);
-    setCurrentConversation(clickedConversation);
+    /*  const clickedConversation = await createConversation(usersData); */
+
+    socket.emit("add_conversation", usersData);
+    setAllConversations((prevConversations: any) => [...prevConversations, usersData]);
     onModalClose();
   };
 

@@ -21,6 +21,7 @@ const ConversationList: FC<ConversationList> = ({ conversationSearchTerm }) => {
 
   const { allConversations, setAllConversations } = useConversation();
 
+  //Initial fetch
   useEffect(() => {
     let sub = true;
     const fetchConversations = async () => {
@@ -30,7 +31,7 @@ const ConversationList: FC<ConversationList> = ({ conversationSearchTerm }) => {
         if (sub) {
           const data = await getConversations(currentUser.uid);
           setAllConversations(data);
-          setFilteredConversations(data);
+
           setLoading(false);
 
           if (!data) return;
@@ -48,6 +49,7 @@ const ConversationList: FC<ConversationList> = ({ conversationSearchTerm }) => {
     };
   }, [currentUser.uid]);
 
+  //Search handle
   useEffect(() => {
     if (conversationSearchTerm.length === 0) setFilteredConversations(allConversations);
 
@@ -62,6 +64,11 @@ const ConversationList: FC<ConversationList> = ({ conversationSearchTerm }) => {
 
     setFilteredConversations(filteredArray);
   }, [conversationSearchTerm]);
+
+  //Socket conversations update handler
+  useEffect(() => {
+    setFilteredConversations(allConversations);
+  }, [allConversations]);
 
   return (
     <StyledConversationList>

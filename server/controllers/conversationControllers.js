@@ -17,7 +17,7 @@ export const getConversations = async (req, res) => {
   }
 };
 
-export const createConversation = async (req, res) => {
+/* export const createConversation = async (req, res) => {
   const {
     searchingUserId,
     searchingUserName,
@@ -56,4 +56,4 @@ export const createConversation = async (req, res) => {
   } catch (error) {
     res.status(409).json({ message: error.message });
   }
-};
+}; */
