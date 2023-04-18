@@ -4,6 +4,7 @@ import useAuth from "../../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { StyledConversation, StyledFriendName, Container } from "./styled";
 import useConversation from "../../../context/ConversationContext";
+import { Avatar } from "@chakra-ui/react";
 
 type ConversationProps = {
   conversation: ConversationObject;
@@ -23,11 +24,10 @@ const Conversation: FC<ConversationProps> = ({ conversation }) => {
 
   return (
     <StyledConversation onClick={conversationClickHandler}>
-      <img
-        alt="img"
+      <Avatar
+        name={eval(`conversation.${friendMemberNumber}name`)}
         src={eval(`conversation.${friendMemberNumber}photourl`)}
-        width="50px"
-        style={{ borderRadius: "50%" }}
+        size="md"
       />
       <Container>
         <StyledFriendName>{eval(`conversation.${friendMemberNumber}name`)}</StyledFriendName>

@@ -6,7 +6,6 @@ import {
   FC,
   Dispatch,
   SetStateAction,
-  useEffect,
 } from "react";
 import { MessageObject } from "../types/types";
 
@@ -21,10 +20,6 @@ export const MessagesContextProvider: FC<{
   children: ReactNode;
 }> = ({ children }) => {
   const [messages, setMessages] = useState<MessageObject[]>([] as MessageObject[]);
-
-  useEffect(() => {
-    console.log(messages);
-  }, [messages]);
 
   return (
     <MessagesContext.Provider

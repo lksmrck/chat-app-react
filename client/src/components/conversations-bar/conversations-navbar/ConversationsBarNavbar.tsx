@@ -13,6 +13,7 @@ import useAuth from "../../../context/AuthContext";
 import { stringGuard } from "../../../utils/utils";
 import { useMediaQuery } from "@chakra-ui/react";
 import { device_max, device_min } from "../../../common/device";
+import { Avatar } from "@chakra-ui/react";
 
 const ConversationsBarNavbar = () => {
   const [isAddConversationModalOpen, setIsAddConversationModalOpen] = useState(false);
@@ -44,12 +45,7 @@ const ConversationsBarNavbar = () => {
         <NavbarContent>
           {(minLargeScreen || maxMediumScreen) && <h6>You're logged as</h6>}
           <ContentContainer>
-            <img
-              alt="prof-pic"
-              src={currentUser.photoURL}
-              width={minLargeScreen || maxMediumScreen ? "22px" : "30px"}
-              style={{ borderRadius: "50%" }}
-            />
+            <Avatar name={currentUser.displayName} src={currentUser.photoURL} size="xs" />
             {(minLargeScreen || maxMediumScreen) && (
               <h1>{stringGuard(currentUser.displayName, 15)}</h1>
             )}

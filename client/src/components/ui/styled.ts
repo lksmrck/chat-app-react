@@ -7,7 +7,7 @@ type ContainerProps = {
 };
 export const Layout = styled.main`
   ${centerItems.all};
-  background-color: ${(props) => props.theme.color.blueLighter};
+  background-color: ${(props) => props.theme.color.background};
   width: 100vw;
   height: 100vh;
 `;

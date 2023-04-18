@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import socket from "../setups/socket";
 import useMessages from "../context/MessagesContext";
-import { MessageObject, ConversationObject } from "../types/types";
 import useConversation from "../context/ConversationContext";
 import useAuth from "../context/AuthContext";
 
@@ -17,7 +16,10 @@ const useSocket = () => {
     socket.connect();
 
     socket.on("connect_error", () => {
-      //TODO: error handle socket connection
+      setIsError(true);
+    });
+
+    socket.on("process_error", (err) => {
       setIsError(true);
     });
 
@@ -33,7 +35,9 @@ const useSocket = () => {
 
     return () => {
       socket.off("connect_error");
+      socket.off("process_error");
       socket.off("receive_message");
+      socket.off("added_me_to_conversations");
     };
   }, [setMessages, setAllConversations]);
 

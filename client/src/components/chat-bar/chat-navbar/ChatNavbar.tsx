@@ -6,6 +6,7 @@ import { device_min } from "../../../common/device";
 import { IconButton } from "@chakra-ui/react";
 import { FcDownLeft } from "react-icons/fc";
 import { FC } from "react";
+import { Avatar } from "@chakra-ui/react";
 
 type ChatNavbarProps = {
   handleClickBackToConversations: (screen: string) => void;
@@ -27,11 +28,10 @@ const ChatNavbar: FC<ChatNavbarProps> = ({ handleClickBackToConversations }) => 
       {currentConversation.id && (
         <Container>
           <div>
-            <img
-              alt="profile-pic"
-              width="30px"
+            <Avatar
+              name={eval(`currentConversation.${friendMemberNumber}name`)}
               src={eval(`currentConversation.${friendMemberNumber}photourl`)}
-              style={{ borderRadius: "50%" }}
+              size="sm"
             />
             <ChatNavbarName>{eval(`currentConversation.${friendMemberNumber}name`)}</ChatNavbarName>
           </div>

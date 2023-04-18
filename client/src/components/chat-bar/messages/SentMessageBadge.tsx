@@ -4,6 +4,8 @@ import { StyledSentMessageBadge, SentMessageBadgeText } from "./styled";
 import useConversation from "../../../context/ConversationContext";
 import useAuth from "../../../context/AuthContext";
 import { getTime } from "../../../utils/utils";
+import { auth } from "../../../setups/firebase";
+import { Avatar } from "@chakra-ui/react";
 
 type SentMessageBadgeProps = {
   sent?: boolean;
@@ -16,18 +18,24 @@ const SentMessageBadge: FC<SentMessageBadgeProps> = ({ sent, received, time }) =
   const { currentConversation } = useConversation();
   const { currentUser } = useAuth();
 
-  let photourl;
+  let userObject = {} as { name: string; photoURL: string };
   if (sent) {
-    photourl = currentUser.photoURL;
+    userObject = { name: currentUser.displayName, photoURL: currentUser.photoURL };
   } else if (received) {
     currentUser.uid === currentConversation.member1id
-      ? (photourl = currentConversation.member2photourl)
-      : (photourl = currentConversation.member1photourl);
+      ? (userObject = {
+          name: currentConversation.member2name,
+          photoURL: currentConversation.member2photourl,
+        })
+      : (userObject = {
+          name: currentConversation.member1name,
+          photoURL: currentConversation.member1photourl,
+        });
   }
 
   return (
     <StyledSentMessageBadge>
-      <img alt="profile-pic" width="25px" src={photourl} style={{ borderRadius: "50%" }} />
+      <Avatar name={userObject.name} src={userObject.photoURL} size="sm" />
       <SentMessageBadgeText>{getTime(time)}</SentMessageBadgeText>
     </StyledSentMessageBadge>
   );

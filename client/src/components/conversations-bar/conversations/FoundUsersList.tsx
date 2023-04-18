@@ -12,7 +12,7 @@ import { createConversation, getConversations } from "../../../api/index";
 import Spinner from "../../ui/Spinner";
 import useConversation from "../../../context/ConversationContext";
 import socket from "../../../setups/socket";
-import { generateID } from "../../../utils/utils";
+import { Avatar } from "@chakra-ui/react";
 
 type FoundUsersResultProps = {
   foundUsers: UserObject[] | [];
@@ -52,12 +52,7 @@ const FoundUsersList: FC<FoundUsersResultProps> = ({ foundUsers, loading, onModa
         foundUsers.map((foundUser) => {
           return (
             <StyledFoundUser key={foundUser.uid} onClick={() => foundUserClickHandler(foundUser)}>
-              <img
-                alt="profile-pic"
-                src={foundUser.photoURL!}
-                width="30px"
-                style={{ borderRadius: "50%" }}
-              />
+              <Avatar name={foundUser.displayName!} src={foundUser.photoURL!} size="sm" />
               <UserInfoContainer>
                 <StyledUserName>{foundUser.displayName}</StyledUserName>
                 <StyledUserEmail>{foundUser.email}</StyledUserEmail>

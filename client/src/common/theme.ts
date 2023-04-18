@@ -28,6 +28,7 @@ export const theme: DefaultTheme = {
     purple: "#c8b6ff",
     blueDarker: "#b8c0ff",
     blueLighter: "#bbd0ff",
+    background: "BDCCCA",
 
     //Secondary
     blackOne: "#252525",
