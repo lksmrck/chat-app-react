@@ -20,12 +20,12 @@ const useSocket = () => {
     });
 
     socket.on("process_error", (err) => {
+      console.log(err);
       setIsError(true);
     });
 
     socket.on("receive_message", async (message) => {
       console.log(message);
-      /* await message; */
       setMessages((prevMessages) => [...prevMessages, message]);
     });
 

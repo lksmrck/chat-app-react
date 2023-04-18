@@ -30,7 +30,6 @@ export const io = new Server(server, {
 });
 
 //Socket.io middleware - retreive user ID during connection
-
 io.use(socketMiddleware);
 
 server.listen(PORT, () => {
@@ -50,7 +49,6 @@ io.on("connection", (socket) => {
   socket.on("add_conversation", (conversation) => addConversationHandler(socket, conversation));
 
   socket.on("disconnect", () => {
-    //when someone wants to disconnect (close the tab)
     console.log("User diconnected", socket.id);
   });
 });

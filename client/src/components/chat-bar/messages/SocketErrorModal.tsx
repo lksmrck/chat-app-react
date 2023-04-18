@@ -23,7 +23,7 @@ const SocketErrorModal: FC<SocketErrorModalProps> = ({ isOpen, onClose }) => {
         <ModalHeader>Error occured</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <p>Error occured during the connection to server.</p>
+          <p>Error occured.</p>
           <p> Please try again later. </p>
         </ModalBody>
 

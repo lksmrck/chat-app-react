@@ -46,7 +46,7 @@ export const addConversationHandler = async (socket, conversation) => {
 
       socket
         .to(receiver[0].id)
-        /*    .to(receivers[1].id) */
+
         .emit("added__me_to_conversations", newConversation.rows[0]);
     } /* else
       socket
@@ -54,8 +54,7 @@ export const addConversationHandler = async (socket, conversation) => {
                 .to(receivers[1].id)
         .emit("added__me_to_conversations", existingConversation.rows[0]); */
   } catch (error) {
-    //TODO: Error handle
-    res.status(404).json({ message: error.message });
+    socket.to(receiver[0].id).emit("process_error", error);
   }
 };
 
