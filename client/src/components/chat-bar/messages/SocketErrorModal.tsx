@@ -23,12 +23,13 @@ const SocketErrorModal: FC<SocketErrorModalProps> = ({ isOpen, onClose }) => {
         <ModalHeader>Error occured</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <p>Error occured.</p>
+          <p>Oops...</p>
+          <p>An unexpected error occured.</p>
           <p> Please try again later. </p>
         </ModalBody>
 
         <ModalFooter>
-          <Button colorScheme="blue" mr={3} onClick={onClose}>
+          <Button colorScheme="teal" mr={3} onClick={onClose}>
             Close
           </Button>
         </ModalFooter>

@@ -1,6 +1,5 @@
 import axios from "axios";
 import { MessageObject, UserObject } from "../types/types";
-import { ConversationObject } from "../types/types";
 
 const API = axios.create({ baseURL: "http://localhost:8000" });
 
@@ -14,17 +13,6 @@ export const getMessages = async (conversationID: string) => {
   return res.data;
 };
 
-//DONE
-export const createConversation = async (usersObject: any) => {
-  try {
-    const res = await API.post("/conversations", usersObject);
-    return res.data;
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-//Přidání nové konverzace po kliknutí na + button v navbaru
 //DONE
 export const findUser = async (email: string, searchingUserID: string) => {
   const res = await API.post("/users/" + email, { searchingUserID });

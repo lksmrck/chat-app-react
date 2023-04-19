@@ -8,7 +8,7 @@ import {
 } from "./styled";
 import { UserObject } from "../../../types/types";
 import useAuth from "../../../context/AuthContext";
-import { createConversation, getConversations } from "../../../api/index";
+import { getConversations } from "../../../api/index";
 import Spinner from "../../ui/Spinner";
 import useConversation from "../../../context/ConversationContext";
 import socket from "../../../setups/socket";
@@ -22,7 +22,8 @@ type FoundUsersResultProps = {
 
 const FoundUsersList: FC<FoundUsersResultProps> = ({ foundUsers, loading, onModalClose }) => {
   const { currentUser } = useAuth();
-  const { currentConversation, setCurrentConversation, setAllConversations } = useConversation();
+  const { currentConversation, setCurrentConversation, allConversations, setAllConversations } =
+    useConversation();
 
   const foundUserClickHandler = async (foundUser: UserObject) => {
     const usersData = {
@@ -34,13 +35,16 @@ const FoundUsersList: FC<FoundUsersResultProps> = ({ foundUsers, loading, onModa
       foundUserPhotoUrl: foundUser.photoURL,
     };
 
-    /* createConversation(usersIdData); */
-    /*  const clickedConversation = await createConversation(usersData); */
+    //Checks if coversation already exists
+    if (allConversations.some((c) => c.members.includes(foundUser.uid))) {
+      const selectedConversation = allConversations.find((c) => c.members.includes(foundUser.uid));
+      if (selectedConversation) setCurrentConversation(selectedConversation);
+    } else {
+      socket.emit("add_conversation", usersData);
+      const data = await getConversations(currentUser.uid);
+      setAllConversations(data);
+    }
 
-    socket.emit("add_conversation", usersData);
-    const data = await getConversations(currentUser.uid);
-    setAllConversations(data);
-    /*    setAllConversations((prevConversations: any) => [...prevConversations, usersData]); */
     onModalClose();
   };
 

@@ -8,7 +8,6 @@ const messageHandler = async (socket, message) => {
       "INSERT INTO message (conversation_id, sender_id, receiver_id, text, time) VALUES ($1, $2, $3, $4, $5) RETURNING *",
       [conversation_id, sender_id, receiver_id, text, time]
     );
-    throw new Error("Blabla");
     socket.to(message.conversation_id).emit("receive_message", newMessage.rows[0]);
   } catch (error) {
     socket.to(message.conversation_id).emit("process_error", error);

@@ -27,7 +27,7 @@ const Conversation: FC<ConversationProps> = ({ conversation }) => {
       <Avatar
         name={eval(`conversation.${friendMemberNumber}name`)}
         src={eval(`conversation.${friendMemberNumber}photourl`)}
-        size="md"
+        size="sm"
       />
       <Container>
         <StyledFriendName>{eval(`conversation.${friendMemberNumber}name`)}</StyledFriendName>

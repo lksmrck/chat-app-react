@@ -37,10 +37,10 @@ server.listen(PORT, () => {
 });
 
 io.on("connection", (socket) => {
-  console.log("User connected: " + socket.id); //when someone connects -> přiřadí random ID
+  console.log("User connected: " + socket.id);
 
   socket.on("join_chat", async (roomID) => {
-    socket.join(roomID); //based on the room the entered in FE
+    socket.join(roomID); //Room ID = conversation ID from FE
   });
 
   //Send a receive message

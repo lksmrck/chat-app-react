@@ -16,6 +16,7 @@ const useSocket = () => {
     socket.connect();
 
     socket.on("connect_error", () => {
+      console.log("connect error");
       setIsError(true);
     });
 
