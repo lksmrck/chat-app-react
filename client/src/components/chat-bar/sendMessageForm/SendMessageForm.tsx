@@ -1,6 +1,6 @@
 import { StyledForm } from "./styled";
 import { Button, Input, FormControl } from "@chakra-ui/react";
-import { useState, ChangeEvent, FormEvent, FC } from "react";
+import { useState, ChangeEvent, FormEvent, FC, useRef, useEffect, RefObject } from "react";
 import useAuth from "../../../context/AuthContext";
 import socket from "../../../setups/socket";
 import useMessages from "../../../context/MessagesContext";
@@ -10,13 +10,23 @@ import { MessageObject } from "../../../types/types";
 import { IconButton } from "@chakra-ui/react";
 import { AiOutlineSend } from "react-icons/ai";
 
-const SendMessageForm: FC = () => {
+type SendMessageFormProps = {
+  showChat: boolean;
+};
+
+const SendMessageForm: FC<SendMessageFormProps> = ({ showChat }) => {
   const [message, setMessage] = useState("");
   const [formError, setFormError] = useState(false);
 
   const { currentUser } = useAuth();
   const { currentConversation } = useConversation();
   const { setMessages } = useMessages();
+
+  const inputRef = useRef(null) as RefObject<HTMLInputElement>;
+
+  useEffect(() => {
+    showChat && inputRef.current!.focus();
+  }, [showChat]);
 
   const inputChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setFormError(false);
@@ -49,6 +59,7 @@ const SendMessageForm: FC = () => {
     <StyledForm onSubmit={submitHandler} data-testid="message-form">
       <FormControl isInvalid={formError} className="container">
         <Input
+          ref={inputRef}
           variant="outline"
           placeholder="Type something..."
           focusBorderColor={theme.color.green}

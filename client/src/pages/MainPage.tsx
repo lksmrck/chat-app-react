@@ -38,7 +38,7 @@ const MainPage = () => {
         )}
         {!minMediumScreen && smDeviceScreen === "CONVERSATIONS" && <ConversationsBar />}
         {!minMediumScreen && smDeviceScreen === "CHAT" && (
-          <Chat handleClickBackToConversations={handleClickBackToConversations} />
+          <Chat showChat={true} handleClickBackToConversations={handleClickBackToConversations} />
         )}
       </ContentWrapper>
       <SocketErrorModal isOpen={isError} onClose={() => setIsError(false)} />

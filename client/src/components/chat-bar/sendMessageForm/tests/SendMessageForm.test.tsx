@@ -4,7 +4,7 @@ import SendMessageForm from "../SendMessageForm";
 import setupTest from "../../../../utils/testUtils";
 
 describe("input testing", () => {
-  beforeEach(() => setupTest(<SendMessageForm />));
+  beforeEach(() => setupTest(<SendMessageForm showChat={true} />));
 
   test("input changes correctly when user is typing", () => {
     const input = screen.getByRole("textbox");
