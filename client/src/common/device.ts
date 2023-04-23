@@ -2,7 +2,8 @@ const size = {
   sm: "600px",
   md: "900px",
   lg: "1200px",
-  xl: "1536px",
+  xl: "1300px",
+  xxl: "1536px",
 };
 
 export const device_min = {
@@ -10,6 +11,7 @@ export const device_min = {
   md: `(min-width: ${size.md})`,
   lg: `(min-width: ${size.lg})`,
   xl: `(min-width: ${size.xl})`,
+  xxl: `(min-width: ${size.xxl})`,
 };
 
 export const device_max = {
@@ -17,4 +19,5 @@ export const device_max = {
   md: `(max-width: ${size.md})`,
   lg: `(max-width: ${size.lg})`,
   xl: `(max-width: ${size.xl})`,
+  xxl: `(max-width: ${size.xxl})`,
 };

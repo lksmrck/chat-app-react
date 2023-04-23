@@ -2,7 +2,7 @@ import { device_min } from "../../common/device";
 import styled from "styled-components";
 
 type ConversationsBarProps = {
-  widthAnimation?: boolean;
+  chatShowed?: boolean;
 };
 
 export const StyledConversationsBar = styled.div<ConversationsBarProps>`
@@ -22,9 +22,9 @@ export const StyledConversationsBar = styled.div<ConversationsBarProps>`
     border-bottom-right-radius: 0;
   }
 
-  //Animation
-  ${({ widthAnimation }) =>
-    widthAnimation &&
+  //Animation if the chat is showed
+  ${({ chatShowed }) =>
+    chatShowed &&
     `
     border-top-right-radius: 0;
     width: 33.3%;

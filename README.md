@@ -8,6 +8,7 @@ User is able to:
 
 - login
 - search users and add conversations
+- filter conversations
 - chat with users, who have been added to conversations
 
 ## 🔸 Configuration and setup

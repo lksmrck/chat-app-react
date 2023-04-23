@@ -9,7 +9,7 @@ export const getTime = (date: Date | string) => {
 
 export const stringGuard = (name: string, letters: number) => {
   if (name.length < letters) return name;
-  const shortName = `${name.slice(0, letters - 1)}...`;
+  const shortName = `${name.slice(0, letters)}...`;
   return shortName;
 };
 

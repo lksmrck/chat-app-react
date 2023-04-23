@@ -29,7 +29,7 @@ const MainPage = () => {
       <ContentWrapper>
         {minMediumScreen && (
           <>
-            <ConversationsBar widthAnimation={showChat} />
+            <ConversationsBar chatShowed={showChat} />
             <Chat
               handleClickBackToConversations={handleClickBackToConversations}
               showChat={showChat}

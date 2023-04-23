@@ -1,10 +1,8 @@
-import defaultPic from "../../assets/Default_pfp.png";
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import { StyledSentMessageBadge, SentMessageBadgeText } from "./styled";
 import useConversation from "../../../context/ConversationContext";
 import useAuth from "../../../context/AuthContext";
 import { getTime } from "../../../utils/utils";
-import { auth } from "../../../setups/firebase";
 import { Avatar } from "@chakra-ui/react";
 
 type SentMessageBadgeProps = {
@@ -14,11 +12,11 @@ type SentMessageBadgeProps = {
 };
 
 const SentMessageBadge: FC<SentMessageBadgeProps> = ({ sent, received, time }) => {
-  /*   const [photourl, setPhotourl] = useState(""); */
   const { currentConversation } = useConversation();
   const { currentUser } = useAuth();
 
   let userObject = {} as { name: string; photoURL: string };
+
   if (sent) {
     userObject = { name: currentUser.displayName, photoURL: currentUser.photoURL };
   } else if (received) {

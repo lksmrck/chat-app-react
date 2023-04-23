@@ -2,16 +2,16 @@
 
 import { Button } from "@chakra-ui/react";
 import { StyledConversationsBar } from "./styled";
-import Navbar from "./conversations-navbar/ConversationsBarNavbar";
+import ConversationsBarNavbar from "./conversations-navbar/ConversationsBarNavbar";
 import Search from "./search/Search";
 import ConversationList from "./conversations/ConversationList";
 import { FC, useState, ChangeEvent } from "react";
 
 type ConversationBarProps = {
-  widthAnimation?: boolean;
+  chatShowed?: boolean;
 };
 
-const ConversationsBar: FC<ConversationBarProps> = ({ widthAnimation }) => {
+const ConversationsBar: FC<ConversationBarProps> = ({ chatShowed }) => {
   const [conversationSearchTerm, setConversationSearchTerm] = useState("");
 
   const handleChangeConversationSearchTerm = (e: ChangeEvent<HTMLInputElement>) => {
@@ -19,8 +19,8 @@ const ConversationsBar: FC<ConversationBarProps> = ({ widthAnimation }) => {
   };
 
   return (
-    <StyledConversationsBar widthAnimation={widthAnimation}>
-      <Navbar />
+    <StyledConversationsBar chatShowed={chatShowed}>
+      <ConversationsBarNavbar chatShowed={chatShowed} />
       <Search handleChangeConversationSearchTerm={handleChangeConversationSearchTerm} />
       <ConversationList conversationSearchTerm={conversationSearchTerm} />
     </StyledConversationsBar>
