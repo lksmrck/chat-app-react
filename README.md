@@ -73,5 +73,6 @@ server/database.sql
 - <b>Backend:</b>
   [Node.js](https://nodejs.org/en/), [Express](https://expressjs.com/), [Socket.io](https://socket.io/)
 - <b>Database:</b>
-  [PostgreSQL](https://www.postgresql.org/) -<b>Other:</b>
+  [PostgreSQL](https://www.postgresql.org/)
+- <b>Other:</b>
   [styled-components](https://styled-components.com/), [Chakra UI](https://chakra-ui.com/)

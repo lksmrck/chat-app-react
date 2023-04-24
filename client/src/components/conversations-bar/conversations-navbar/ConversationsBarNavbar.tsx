@@ -25,13 +25,10 @@ const ConversationsBarNavbar: FC<ConversationsBarNavbarProps> = ({ chatShowed })
 
   const { googleSignOut } = useUserAuth();
 
-  /* const [minLargeScreen] = useMediaQuery(device_min.lg); */
-  const [minSmallScreen] = useMediaQuery(device_min.sm);
   const [minMediumScreen] = useMediaQuery(device_min.md);
   const [minLargeScreen] = useMediaQuery(device_min.lg);
   const [minXLargeScreen] = useMediaQuery(device_min.xl);
 
-  const [maxSmallScreen] = useMediaQuery(device_max.sm);
   const [maxMediumScreen] = useMediaQuery(device_max.md);
   const [maxLargeScreen] = useMediaQuery(device_max.lg);
   const [maxXLargeScreen] = useMediaQuery(device_max.xl);
