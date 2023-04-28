@@ -12,13 +12,7 @@ const app = express();
 
 dotenv.config();
 
-app.use(
-  cors({
-    origin: "*",
-    methods: ["GET", "POST", "DELETE"],
-    credentials: true,
-  })
-);
+app.use(cors());
 
 const PORT = /* process.env.PORT ||  */ 8000;
 
@@ -30,9 +24,7 @@ const server = http.createServer(app);
 
 export const io = new Server(server, {
   cors: {
-    origin: false, //FE
-    methods: ["GET", "POST"],
-    credentials: true,
+    origin: "*",
   },
 });
 
