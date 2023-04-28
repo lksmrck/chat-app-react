@@ -53,7 +53,8 @@ const ConversationsBarNavbar: FC<ConversationsBarNavbarProps> = ({ chatShowed })
 
     switch (true) {
       case minMediumScreen && maxLargeScreen && chatShowed:
-        return;
+        numOfLetters = 4;
+        break;
       case minMediumScreen && maxLargeScreen && !chatShowed:
         numOfLetters = 19;
         break;
@@ -67,7 +68,7 @@ const ConversationsBarNavbar: FC<ConversationsBarNavbarProps> = ({ chatShowed })
         numOfLetters = 35;
         break;
       case minLargeScreen && maxXLargeScreen && chatShowed:
-        numOfLetters = 13;
+        numOfLetters = 12;
         break;
       default:
         numOfLetters = 20;
