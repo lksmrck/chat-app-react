@@ -2,7 +2,7 @@
   "name": "chat-app-react",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8000",
+  "proxy": "http://localhost:8000/",
   "dependencies": {
     "@chakra-ui/react": "^2.5.1",
     "@emotion/react": "^11.10.6",

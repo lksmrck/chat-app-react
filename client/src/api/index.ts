@@ -1,7 +1,7 @@
 import axios from "axios";
 import { MessageObject, UserObject } from "../types/types";
 
-const API = axios.create({ baseURL: "http://localhost:8000" });
+const API = axios.create({ baseURL: /* "http://localhost:8000" */ process.env.REACT_APP_API });
 
 export const getConversations = async (userId: string) => {
   const res = await API.get("/conversations/" + userId);
