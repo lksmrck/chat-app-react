@@ -14,7 +14,7 @@ dotenv.config();
 
 app.use(cors());
 
-const PORT = /* process.env.PORT ||  */ 8000;
+const PORT = process.env.PORT || 8000;
 
 app.use(express.json());
 app.use("/", routes);
@@ -25,14 +25,6 @@ const server = http.createServer(app);
 export const io = new Server(server, {
   cors: {
     origin: "*",
-    handlePreflightRequest: (req, res) => {
-      res.writeHead(200, {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, POST",
-        "Access-Control-Allow-Headers": "user-custom-header",
-      });
-      res.send();
-    },
   },
 });
 

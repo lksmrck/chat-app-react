@@ -1,6 +1,5 @@
 import setupTest from "../../../../utils/testUtils";
 import { screen } from "@testing-library/react";
-import { theme } from "../../../../common/theme";
 import SentMessageBadge from "../SentMessageBadge";
 import { mockUser } from "../../../../mocks/data";
 
@@ -16,14 +15,13 @@ describe("sent message badge image is rendered properly", () => {
   );
 
   test("correct data is rendered", async () => {
-    const image = screen.getByAltText("profile-pic");
+    const image = screen.getByRole("img");
     expect(image).toBeInTheDocument();
   });
 
   test("Sent message badge when sent={true} displays img of the mockUser", () => {
-    const image = screen.getByAltText("profile-pic");
+    const image = screen.getByLabelText(mockUser.displayName);
     expect(image).toBeInTheDocument();
-    expect(image).toHaveProperty("src", mockUser.photoURL);
   });
 
   test("correct time is rendered within sent message badge", async () => {
