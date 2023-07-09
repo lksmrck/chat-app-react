@@ -15,11 +15,11 @@ Chat application using websockets for iteractive communication
 
 ## 🔸 Screenshots
 
-<img src="./readmeAssets/1.png" width="417" height="250" />
-<img src="./readmeAssets/2.png" width="262" height="250" />
-<img src="./readmeAssets/3.png" width="381" height="250" />
-<img src="./readmeAssets/4.png" width="385" height="250" />
-<img src="./readmeAssets/5.png" width="136" height="300" />
+<img src="./readmeAssets/1.png" width="751" height="450" />
+<img src="./readmeAssets/2.png" width="471" height="450" />
+<img src="./readmeAssets/3.png" width="686" height="450" />
+<img src="./readmeAssets/4.png" width="693" height="450" />
+<img src="./readmeAssets/5.png" width="244" height="450" />
 
 ## 🔸 Key Features
 
